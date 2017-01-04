@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-function MoodTemplate({ icon, backgroundColor }) {  
+function MoodTemplate({ icon, backgroundColor }) {
   return (
     <View style={styles.fakeBorder}>
       <View style={[styles.floatView, { backgroundColor: backgroundColor} ]}>
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   fakeBorder: {
     /*
     Change this when Android's borderRadius
-    begins work together with borderBottomWidth
+    begins work together with borderBottomWidth.
     */
     width: 50,
     height: 50,

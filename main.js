@@ -6,18 +6,18 @@ import {
   View,
 } from 'react-native';
 
-import { MoodIcon } from './src/components/common';
+import { Card, MoodIcon, Header } from './src/components/common';
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open my new app!</Text>
-        <MoodIcon type={'SUN'} />
-        <MoodIcon type={'CLOUD'} />
-        <MoodIcon type={'RAIN'} />
-        <MoodIcon type={'THUNDER'} />
-        <MoodIcon type={'SUN'} />
+        <Card type='SUN' />
+        <Card type='CLOUD' />
+        <Card type='RAIN' />
+        <Card type='THUNDER' />
+        <Card type='RAIN' />
+
       </View>
     );
   }
@@ -25,10 +25,13 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#275B00',
     flex: 1,
-    backgroundColor: '#fff',
+
+  /*
+
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center',*/
   },
 });
 
