@@ -4,55 +4,65 @@ import { moodTypes, Button } from './';
 
 console.log('Button', Button )
 
-function SocialBar({type, supportCount, addSupport, commentCount, addComment}){
+function SocialBar({
+  type,
+  supportCount,
+  addSupport,
+  commentCount,
+  addComment,
+  isLiked,
+  likeIt
+}){
 
 
   const moodStatus = moodTypes[type];
   const { container,
     socialIcon,
     socialSupport,
-    socialComment,
-    } = styles;
-    //console.log('handleSupports', handleSupports)
+    commentContainer,
+    socialText,
+  } = styles;
+
+
+  const source = isLiked ? moodStatus.socialLikedImage : moodStatus.socialImage;
+  const defaultColor = '#999999';
+  const socialColor = isLiked ? moodStatus.likedColor : defaultColor;
+  console.log('socialColor', socialColor)
+
+  console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
   return(
     <View style={container}>
 
+
       <Button onPress={addSupport}>
-        <Image source={moodStatus.socialImage} style={socialIcon}></Image>
+          <Image source={source} style={socialIcon}></Image>
       </Button>
 
       <View style={socialSupport}>
-          <Text>{`${supportCount} STOKES`}</Text>
+        <Text style={[socialText, { color: socialColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Text>
       </View>
 
-      <View style={socialComment}>
-          <Image source={require('./../../assets/comment.png')} style={socialIcon}></Image>
-          <View style={socialSupport}>
-            <Text>{`${commentCount} COMMENTS`}</Text>
+      <View style={commentContainer}>
+        <Image source={require('./../../assets/comment.png')} style={socialIcon}></Image>
+        <View style={socialSupport}>
+          <Text style={[socialText, { color: defaultColor}]}>{`${commentCount} COMMENTS`}</Text>
           </View>
       </View>
-
 
 
     </View>
   );
 };
 
-
-
-
 const styles = StyleSheet.create({
   container: {
     height: 60,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
     marginTop: 7,
-    paddingLeft: 15,
-    paddingRight: 13,
-    /*
-    */
-
+    marginLeft: 15,
+    marginRight: 13,
   },
   socialIcon: {
     width: 20,
@@ -61,24 +71,21 @@ const styles = StyleSheet.create({
   socialSupport:{
     height: 30,
     flex: 1,
-    justifyContent:'center',
-    paddingLeft: 15,
+    flexDirection: 'column',
+    justifyContent:'space-around',
+    marginLeft: 15,
+    alignItems: 'center',
   },
-  socialComment:{
+  commentContainer:{
     height: 30,
     flex: 1,
     flexDirection: 'row',
     justifyContent:'center',
-    paddingRight: 25,
+    marginRight: 5,
     alignItems: 'center',
   },
-  titleText: {
-    fontSize: 21,
-    color: '#A6AAAE',
-  },
-  timeStampText: {
+  socialText: {
     fontSize: 12,
-    color: '#B1B3B7',
   },
 });
 

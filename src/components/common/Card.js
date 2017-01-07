@@ -8,16 +8,22 @@ class Card extends Component{
     this.state = {
       supportCount: 0,
       commentCount: 0,
+      isLiked: false,
     };
+  }
 
-    //ßconsole.log('contrutor', this.state)
+  likeIt = () => {
+    // Once liked, it is not possible deslike!
+    // It is a way to help supporting people.
+    this.setState({ isLiked: true });
   }
 
   addSupport = () => {
     console.log('fui clicado')
-    this.setState({ supportCount: ++this.state.supportCount });
-    console.log('supportCount', this.state.supportCount)
-
+    this.setState({
+      supportCount: ++this.state.supportCount,
+      isLiked: true,
+    });
   }
 
   addComment = () => {
@@ -31,15 +37,15 @@ class Card extends Component{
         <Header title='Adeildo' timeStamp='17 m'>
           <MoodIcon type={type} />
         </Header>
-        {/*console.log('countSupports', this.state)*/}
-        {console.log('render', this.state.supportCount)}
+
         <SocialBar
          addSupport={this.addSupport}
          supportCount={this.state.supportCount}
          addComment={this.addComment}
          commentCount={this.state.commentCount}
+         likeIt={this.state.likeIt}
+         isLiked={this.state.isLiked}
          type={type}/>
-
       </View>
     );
   }

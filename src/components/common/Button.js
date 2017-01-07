@@ -18,6 +18,8 @@ function Button({onPress, children}){
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
+    flex: 1,
 
 
 
