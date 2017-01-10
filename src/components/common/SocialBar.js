@@ -29,7 +29,7 @@ function SocialBar({
   const socialColor = isLiked ? moodStatus.likedColor : defaultColor;
   console.log('socialColor', socialColor)
 
-  console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
+  //console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
   return(
     <View style={container}>
 

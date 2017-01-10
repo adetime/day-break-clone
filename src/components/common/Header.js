@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
+import {Heading1} from './DBText';
+
 function Header({children, title, timeStamp}) {
   const { mainContainer, titleContainer, titleText, timeStampText } = styles;
   return (
@@ -8,6 +10,7 @@ function Header({children, title, timeStamp}) {
       {children}
       <View style={titleContainer}>
         <Text style={titleText}>{title}</Text>
+        <Heading1>Adeildo</Heading1>
       </View>
       <Text style={timeStampText}>{timeStamp}</Text>
     </View>
