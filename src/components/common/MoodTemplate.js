@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
 function MoodTemplate({ icon, backgroundColor }) {
-  console.log('backgroundColor', backgroundColor)
+  //console.log('backgroundColor', backgroundColor)
   return (
     <View style={styles.fakeBorder}>
       <View style={[styles.floatView, { backgroundColor: backgroundColor} ]}>

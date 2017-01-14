@@ -6,3 +6,5 @@ export * from './Card';
 export * from './SocialBar';
 export * from './types';
 export * from './Button';
+export * from './BasicButton';
+export * from './Body';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Text } from 'react-native';
-import { Header, MoodIcon, SocialBar } from './';
+import { Header, MoodIcon, Body, SocialBar } from './';
 
 class Card extends Component{
   constructor(props){
@@ -19,7 +19,7 @@ class Card extends Component{
   }
 
   addSupport = () => {
-    console.log('fui clicado')
+    //console.log('fui clicado')
     this.setState({
       supportCount: ++this.state.supportCount,
       isLiked: true,
@@ -34,9 +34,15 @@ class Card extends Component{
     const type = this.props.type;
     return(
       <View style={styles.container}>
-        <Header title='Adeildo' timeStamp='17 m'>
+        <Header userName='Carey' timeStamp='45 m'>
           <MoodIcon type={type} />
         </Header>
+
+        <Body
+        numberOfLines={2}
+        text='Today was really cool because I had a party at home.
+        And the beauty is that I did not drink any kind of'
+        />
 
         <SocialBar
          addSupport={this.addSupport}

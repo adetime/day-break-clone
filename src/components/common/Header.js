@@ -1,24 +1,32 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-import {Heading1} from './DBText';
+import {
+  Heading1 as Name,
+  Heading3 as TimeStamp,
+} from './DBText';
 
-function Header({children, title, timeStamp}) {
-  const { mainContainer, titleContainer, titleText, timeStampText } = styles;
+function Header({children, userName, timeStamp}) {
+  const {
+    containerStyle,
+    nameContainerStyle,
+    nameTextStyle,
+    timeStampStyle,
+  } = styles;
+
   return (
-    <View style={mainContainer}>
+    <View style={containerStyle}>
       {children}
-      <View style={titleContainer}>
-        <Text style={titleText}>{title}</Text>
-        <Heading1>Adeildo</Heading1>
+      <View style={nameContainerStyle}>
+        <Name style={nameTextStyle}>{userName}</Name>
       </View>
-      <Text style={timeStampText}>{timeStamp}</Text>
+      <TimeStamp style={timeStampStyle}>{timeStamp}</TimeStamp>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  mainContainer: {
+  containerStyle: {
     height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -30,18 +38,16 @@ const styles = StyleSheet.create({
     */
 
   },
-  titleContainer:{
+  nameContainerStyle:{
     height: 30,
     flex: 1,
     justifyContent:'center',
     paddingLeft: 15,
   },
-  titleText: {
-    fontSize: 21,
+  nameTextStyle: {
     color: '#A6AAAE',
   },
-  timeStampText: {
-    fontSize: 12,
+  timeStampStyle: {
     color: '#B1B3B7',
   },
 });

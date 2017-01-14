@@ -1,8 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { moodTypes, Button } from './';
+import { moodTypes, Button, BasicButton } from './';
 
-console.log('Button', Button )
+import {
+  Heading4 as Caption,
+} from './DBText';
+
+
+const defaultColor = '#999999';
 
 function SocialBar({
   type,
@@ -16,38 +21,35 @@ function SocialBar({
 
 
   const moodStatus = moodTypes[type];
-  const { container,
-    socialIcon,
+  const {
+    containerStyle,
+    iconStyle,
     socialSupport,
     commentContainer,
-    socialText,
+    captionStyle,
   } = styles;
 
 
   const source = isLiked ? moodStatus.socialLikedImage : moodStatus.socialImage;
-  const defaultColor = '#999999';
-  const socialColor = isLiked ? moodStatus.likedColor : defaultColor;
-  console.log('socialColor', socialColor)
+
+  const reactionColor = isLiked ? moodStatus.likedColor : defaultColor;
+  //console.log('socialColor', socialColor)
 
   //console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
   return(
-    <View style={container}>
+    <View style={containerStyle}>
 
+      <BasicButton onPress={addSupport}>
+        <Image source={source} style={iconStyle}></Image>
+        <Caption style={[captionStyle, { color: reactionColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Caption>
+      </BasicButton>
 
-      <Button onPress={addSupport}>
-          <Image source={source} style={socialIcon}></Image>
-      </Button>
+      <BasicButton>
+        <Image source={require('./../../assets/comment.png')} style={iconStyle}></Image>
+        <Caption style={captionStyle}>{`${commentCount} COMMENTS`}</Caption>
 
-      <View style={socialSupport}>
-        <Text style={[socialText, { color: socialColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Text>
-      </View>
+      </BasicButton>
 
-      <View style={commentContainer}>
-        <Image source={require('./../../assets/comment.png')} style={socialIcon}></Image>
-        <View style={socialSupport}>
-          <Text style={[socialText, { color: defaultColor}]}>{`${commentCount} COMMENTS`}</Text>
-          </View>
-      </View>
 
 
     </View>
@@ -55,20 +57,26 @@ function SocialBar({
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containerStyle: {
     height: 60,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 7,
-    marginLeft: 15,
-    marginRight: 13,
+    marginHorizontal: 15,
+    borderTopWidth: 2,
+    borderColor: '#C5C5C5',
+
+
+    //borderWidth: 2,
+    //borderColor: 'red',
   },
-  socialIcon: {
+  iconStyle: {
     width: 20,
     height: 20,
+    //margin: 0,
   },
-  socialSupport:{
+  /*socialSupport:{
     height: 30,
     flex: 1,
     flexDirection: 'column',
@@ -83,9 +91,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     marginRight: 5,
     alignItems: 'center',
-  },
-  socialText: {
-    fontSize: 12,
+  },*/
+  captionStyle: {
+    color: defaultColor,
+    marginLeft: 20,
+    marginRight: 20,
   },
 });
 
