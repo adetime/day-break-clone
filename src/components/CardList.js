@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { Card, MoodIcon, Header } from './common';
+import { Card } from './common';
 
 import getCards from './../server/api';
 
@@ -14,43 +14,19 @@ class CardList extends Component {
     this.state = {
       loading: true,
       cards: [],
-      message: 'inicial',
     };
   }
 
   componentDidMount() {
     this.setState({
-      loading: false
+      loading: false,
+      cards: getCards(),
     });
-    this.setState({ message: 'passei' });
-
-
-    if (this.state.loading){
-      this.setState({
-        cards: getCards(),
-      });
-
-      //console.log('state', this.state.cards)
-
-
-    }
   }
 
   renderCard = () => {
     if (!this.state.loading){
-      return this.state.cards.map( card => {
-        const {id, type, userName, timeStamp, body } = card;
-
-        return(
-          <Card
-            key={id}
-            type={type}
-            userName={userName}
-            body={body}
-            timeStamp={timeStamp}
-          />
-        );
-      });
+      return this.state.cards.map(card => <Card key={card.id} data={card} />);
     }else {
       return <Text>Loading ...</Text>;
     }

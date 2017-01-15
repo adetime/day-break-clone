@@ -30,7 +30,7 @@ class Card extends Component{
   }
 
   render() {
-    const {type, userName, timeStamp, body } = this.props;
+    const {type, userName, timeStamp, body } = this.props.data;
     return(
       <View style={styles.container}>
         <Header userName={userName} timeStamp={timeStamp}>
@@ -38,18 +38,19 @@ class Card extends Component{
         </Header>
 
         <Body
-        numberOfLines={2}
-        text={body}
+          numberOfLines={2}
+          text={body}
         />
 
         <SocialBar
-         addSupport={this.addSupport}
-         supportCount={this.state.supportCount}
-         addComment={this.addComment}
-         commentCount={this.state.commentCount}
-         likeIt={this.state.likeIt}
-         isLiked={this.state.isLiked}
-         type={type}/>
+           addSupport={this.addSupport}
+           supportCount={this.state.supportCount}
+           addComment={this.addComment}
+           commentCount={this.state.commentCount}
+           likeIt={this.state.likeIt}
+           isLiked={this.state.isLiked}
+           type={type}
+        />
       </View>
     );
   }
