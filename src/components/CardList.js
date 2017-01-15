@@ -1,44 +1,55 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ListView } from 'react-native';
 
 import { Card } from './common';
-
 import getCards from './../server/api';
-
 
 
 class CardList extends Component {
   constructor(props) {
     super(props);
+
+    // Initiate the data source for ListView
+    // and define the function which takes tells ListView to re-render
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+
     // Initial state
     this.state = {
       loading: true,
-      cards: [],
+      dataSource: ds.cloneWithRows(['row 1', 'row 2']),
     };
   }
 
+
   componentDidMount() {
+    // Fetch the data and setState
     this.setState({
       loading: false,
-      cards: getCards(),
+      dataSource: this.state.dataSource.cloneWithRows(getCards()),
     });
   }
 
-  renderCard = () => {
-    if (!this.state.loading){
-      return this.state.cards.map(card => <Card key={card.id} data={card} />);
-    }else {
-      return <Text>Loading ...</Text>;
-    }
+  // Render one ListView row for each Card
+  renderRow = (oneCard) => {
+    return <Card data={oneCard} />;
   }
 
 
   render() {
-    return (
-      <ScrollView>
-        {this.renderCard()}
-      </ScrollView>
-    );
+    // Avoid to render empty section headers
+    if (!this.state.loading){
+      return (
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
+      );
+    }else {
+      // ----------------- Attention: to be changed by a spinning animation
+      return <Text>Loading ...</Text>;
+    }
   }
 
 }

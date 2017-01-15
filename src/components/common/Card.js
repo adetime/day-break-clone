@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, Text } from 'react-native';
+import {View, StyleSheet } from 'react-native';
 import { Header, MoodIcon, Body, SocialBar } from './';
 
 class Card extends Component{
@@ -19,6 +19,8 @@ class Card extends Component{
   }
 
   addSupport = () => {
+    // -------------- Attention: each user should support each card
+    // -------------- only one time. To be fixed with authetication rules 
     this.setState({
       supportCount: ++this.state.supportCount,
       isLiked: true,
@@ -63,12 +65,14 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginBottom: 16,
     borderRadius: 2,
-    elevation: 5, /* Just Android*/
-    shadowColor: '#000',
-    shadowOffset: { width: 5, height: 5},
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    alignSelf: 'stretch',
+    elevation: 5, // Android only
+    shadowColor: '#000', // iOS only
+    shadowOffset: { width: 5, height: 5}, // iOS only
+    shadowOpacity: 0.3, // iOS only
+    shadowRadius: 3, // iOS only
+    alignSelf: 'stretch', // The card fills entire horizontal space
+                          // even on iPad, and a short given description
+                          // by the user
   },
 });
 
