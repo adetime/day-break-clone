@@ -6,18 +6,15 @@ import {
   View,
 } from 'react-native';
 
-import { Card, MoodIcon, Header } from './src/components/common';
+import { Header } from './src/components/common';
+import CardList from './src/components/CardList';
 
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Card type='SUN' />
-        <Card type='CLOUD' />
-        <Card type='RAIN' />
-        <Card type='THUNDER' />
-        <Card type='RAIN' />
-
+        <Header userName='Home'/>
+        <CardList />
       </View>
     );
   }

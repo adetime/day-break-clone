@@ -6,7 +6,7 @@ import {
   Heading3 as TimeStamp,
 } from './DBText';
 
-function Header({children, userName, timeStamp}) {
+function Header({children, userName, timeStamp, style}) {
   const {
     containerStyle,
     nameContainerStyle,
@@ -15,7 +15,7 @@ function Header({children, userName, timeStamp}) {
   } = styles;
 
   return (
-    <View style={containerStyle}>
+    <View style={[containerStyle, style]}>
       {children}
       <View style={nameContainerStyle}>
         <Name style={nameTextStyle}>{userName}</Name>

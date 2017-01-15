@@ -1,0 +1,108 @@
+{
+  "cards": [
+    {
+      "id": "card_01_fjflg",
+      "timeStamp": "15 m",
+      "ownerId": "nance_01_hfkf",
+      "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
+      "type": "SUN",
+      "numberOfSupport": 2,
+      "supportedUserId": [
+        "jane_02_fkgm",
+        "elen_03_flgn",
+      ],
+    },
+    {
+      "id": "card_02_sdmns",
+      "timeStamp": "23 m",
+      "ownerId": "jane_02_fkgm",
+      "body": "uia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+      "type": "CLOUD",
+      "numberOfSupport": 3,
+      "supportedUserId": [
+        "nance_01_hfkf",
+        "elen_03_flgn",
+        "james_04_sdmed",
+      ],
+    },
+    {
+      "id": "card_03_grgs",
+      "timeStamp": "48 m",
+      "ownerId": "elen_03_flgn",
+      "body": "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
+      "type": "RAIN",
+      "numberOfSupport": 1,
+      "supportedUserId": [
+        "nance_01_hfkf",
+      ],
+    },
+    {
+      "id": "card_04_dsfbjer",
+      "timeStamp": "1 h",
+      "ownerId": "james_04_sdmed",
+      "body": "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iurequis sunt voluptatem rerum illo velit",
+      "type": "THUNDER",
+      "numberOfSupport": 1,
+      "supportedUserId": [
+        "nance_01_hfkf",
+      ],
+    },
+    ,
+    {
+      "id": "card_05_dfgrt",
+      "timeStamp": "2 h",
+      "ownerId": "james_04_sdmed",
+      "body": "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iurequis sunt voluptatem rerum illo velit",
+      "type": "SUN",
+      "numberOfSupport": 1,
+      "supportedUserId": [
+        "nance_01_hfkf",
+      ],
+    },
+    {
+      "id": "card_06_fjflg",
+      "timeStamp": "3 h",
+      "ownerId": "nance_01_hfkf",
+      "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
+      "type": "SUN",
+      "numberOfSupport": 2,
+      "supportedUserId": [
+        "jane_02_fkgm",
+        "elen_03_flgn",
+      ],
+    },
+    {
+      "id": "card_07_fjflg",
+      "timeStamp": "5 h",
+      "ownerId": "elen_03_flgn",
+      "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
+      "type": "THUNDER",
+      "numberOfSupport": 2,
+      "supportedUserId": [
+        "jane_02_fkgm",
+        "elen_03_flgn",
+      ],
+    },
+  ],
+  "usersById":
+    {
+      "nance_01_hfkf": {
+        "userName": "nance",
+        "fullName": "Nance Little",
+      },
+      "jane_02_fkgm": {
+        "userName": "jane",
+        "fullName": "Jane Norton",
+      },
+      "elen_03_flgn": {
+        "userName": "elen",
+        "fullName": "Elen Nargo",
+      },
+      "james_04_sdmed": {
+        "userName": "jame",
+        "fullName": "James Barten",
+      },
+
+    },
+
+}

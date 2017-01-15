@@ -19,7 +19,6 @@ class Card extends Component{
   }
 
   addSupport = () => {
-    //console.log('fui clicado')
     this.setState({
       supportCount: ++this.state.supportCount,
       isLiked: true,
@@ -31,17 +30,16 @@ class Card extends Component{
   }
 
   render() {
-    const type = this.props.type;
+    const {type, userName, timeStamp, body } = this.props;
     return(
       <View style={styles.container}>
-        <Header userName='Carey' timeStamp='45 m'>
+        <Header userName={userName} timeStamp={timeStamp}>
           <MoodIcon type={type} />
         </Header>
 
         <Body
         numberOfLines={2}
-        text='Today was really cool because I had a party at home.
-        And the beauty is that I did not drink any kind of'
+        text={body}
         />
 
         <SocialBar
@@ -69,6 +67,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 5, height: 5},
     shadowOpacity: 0.3,
     shadowRadius: 3,
+    alignSelf: 'stretch',
   },
 });
 
