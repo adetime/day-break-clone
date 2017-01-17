@@ -7,7 +7,7 @@ import {
 
 const Body = ({text, style, numberOfLines }) => {
   return(
-    <View style={styles.containerStyle}>
+    <View style={[styles.containerStyle, style]}>
       <Paragraph
         numberOfLines={numberOfLines}
         style={styles.textStyle}
@@ -21,7 +21,7 @@ const Body = ({text, style, numberOfLines }) => {
 const styles = StyleSheet.create({
   containerStyle: {
     marginVertical: 5,
-    marginHorizontal: 20,
+    //marginHorizontal: 20,
   },
   textStyle: {
     color: 'black',

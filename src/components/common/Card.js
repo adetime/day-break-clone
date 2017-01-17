@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {View, StyleSheet } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+
 import { Header, MoodIcon, Body, SocialBar } from './';
+
 
 class Card extends Component{
   constructor(props){
@@ -28,20 +31,28 @@ class Card extends Component{
   }
 
   addComment = () => {
-    this.setState({ commentCount: ++this.state.commentCount });
+    //this.setState({ commentCount: ++this.state.commentCount });
+    Actions.cardDetail();
+    console.log('Actions', Actions)
   }
 
   render() {
+    const { containerStyle, headerStyle, bodyStyle } = styles;
     const {type, ownerUserName, timeStamp, body } = this.props.data;
     return(
-      <View style={styles.container}>
-        <Header userName={ownerUserName} timeStamp={timeStamp}>
+      <View style={containerStyle}>
+        <Header
+          userName={ownerUserName}
+          timeStamp={timeStamp}
+          style={headerStyle}
+        >
           <MoodIcon type={type} />
         </Header>
 
         <Body
           numberOfLines={2}
           text={body}
+          style={bodyStyle}
         />
 
         <SocialBar
@@ -59,7 +70,7 @@ class Card extends Component{
 }
 
 const styles = StyleSheet.create({
-  container: {
+  containerStyle: {
     backgroundColor: '#F5F5F5',
     marginLeft: 10,
     marginRight: 10,
@@ -73,6 +84,13 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch', // The card fills entire horizontal space
                           // even on iPad, and a short given description
                           // by the user
+  },
+  headerStyle: {
+    paddingLeft: 15,
+    paddingRight: 13,
+  },
+  bodyStyle: {
+    marginHorizontal: 20,
   },
 });
 

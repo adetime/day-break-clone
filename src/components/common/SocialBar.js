@@ -16,7 +16,9 @@ function SocialBar({
   commentCount,
   addComment,
   isLiked,
-  likeIt
+  likeIt,
+  vertical,
+  style,
 }){
 
 
@@ -33,18 +35,22 @@ function SocialBar({
   const source = isLiked ? moodStatus.socialLikedImage : moodStatus.socialImage;
 
   const reactionColor = isLiked ? moodStatus.likedColor : defaultColor;
+
+  const buttonStyle = vertical ? {flexDirection: 'column'} : {};
+  //const verticalStyle = vertical ? {} : {justifyContent: 'space-between', borderTopWidth: 2, borderColor: '#C5C5C5',};
+
   //console.log('socialColor', socialColor)
 
   //console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
   return(
-    <View style={containerStyle}>
+    <View style={[containerStyle, style]}>
 
-      <BasicButton onPress={addSupport}>
+      <BasicButton onPress={addSupport} style={buttonStyle}>
         <Image source={source} style={iconStyle}></Image>
         <Caption style={[captionStyle, { color: reactionColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Caption>
       </BasicButton>
 
-      <BasicButton>
+      <BasicButton onPress={addComment} style={buttonStyle}>
         <Image source={require('./../../assets/comment.png')} style={iconStyle}></Image>
         <Caption style={captionStyle}>{`${commentCount} COMMENTS`}</Caption>
 
@@ -64,12 +70,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 7,
     marginHorizontal: 15,
+    //borderTopWidth: 2,
+    //borderColor: '#C5C5C5',
+
     borderTopWidth: 2,
     borderColor: '#C5C5C5',
 
 
-    //borderWidth: 2,
-    //borderColor: 'red',
+  //  borderWidth: 2,
+  //  borderColor: 'red',
   },
   iconStyle: {
     width: 20,

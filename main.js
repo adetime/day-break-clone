@@ -9,13 +9,17 @@ import {
 import { Header } from './src/components/common';
 import CardList from './src/components/CardList';
 import CardDetail from  './src/components/CardDetail';
+
+import Router from './src/Router';
+
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Header userName='Home'/>
-        {/*<CardList />*/}
-        <CardDetail />
+        <Router />
+        {/*<Header userName='Home'/>
+        <CardList />
+        <CardDetail />*/}
       </View>
     );
   }

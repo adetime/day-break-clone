@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet } from 'react-native';
+import { View , Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
 
-import { Header, MoodIcon, Body, SocialBar } from './common';
+import { Header, MoodIcon, Body, SocialBar, Comment } from './common';
 
-import {getCardById, getCommentsByCardId} from './../server/api'; // ----- to be changed
+import { getCardById, getCommentsByCardId } from './../server/api'; // ----- to be changed
 
 class CardDetail extends Component {
   constructor(props) {
@@ -18,53 +18,47 @@ class CardDetail extends Component {
       const { userName, timeStamp, message } = comment;
 
       return (
-        <View key={++cont} >
-          <Header userName={userName} timeStamp={timeStamp}/>
-          <Body text={message} />
-        </View>
+        <Comment key={++cont}
+          userName={userName}
+          message={message}
+          timeStamp={timeStamp}
+        />
       );
-
     });
   }
 
   render() {
 
     const data = getCardById("card_07_fjflg");
-    const {type, ownerUserName, timeStamp, body } = data;
+    const { type, ownerUserName, timeStamp, body } = data;
 
-
-
-
-
-    //sconsole.log('comments', comments)
-
+    const { containerStyle, headerStyle, bodyStyle, socialBarStyle } = styles;
 
     return(
-      <View style={styles.containerStyle}>
+      <ScrollView>
+        <StatusBar hidden />
+        <View style={containerStyle}>
 
+          <Header userName={ownerUserName} style={headerStyle} small />
+          <Body text={body} style={bodyStyle} />
 
-        <Text>ScroolView Placeholder</Text>
+          <SocialBar
+             addSupport={() => {}}
+             supportCount={1}
+             addComment={() => {}}
+             commentCount={3}
+             likeIt={() => {}}
+             isLiked={false}
+             type={type}
+             vertical
+             style={socialBarStyle}
+          />
 
-        <Header userName={ownerUserName}/>
+          {this.renderComments()}
 
-        <Body text={body} />
+        </View>
+      </ScrollView>
 
-        <SocialBar
-           addSupport={() => {}}
-           supportCount={1}
-           addComment={() => {}}
-           commentCount={3}
-           likeIt={() => {}}
-           isLiked={false}
-           type={type}
-        />
-
-        {this.renderComments()}
-
-
-
-
-      </View>
     );
   }
 
@@ -74,8 +68,19 @@ const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: 'white',
     flex: 1,
-    borderWidth: 4,
-    borderColor: 'red',
+    //borderWidth: 4,
+    //borderColor: 'red',
+  },
+  headerStyle: {
+    marginHorizontal: 20,
+  },
+  bodyStyle: {
+    marginHorizontal: 20,
+  },
+  socialBarStyle: {
+    borderTopWidth: 0,
+    justifyContent: 'space-around',
+    marginVertical: 30,
   },
 
 });

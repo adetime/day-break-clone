@@ -8,3 +8,4 @@ export * from './types';
 export * from './Button';
 export * from './BasicButton';
 export * from './Body';
+export * from './Comment';
