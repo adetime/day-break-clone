@@ -1,20 +1,49 @@
+// This file is just a "Fack API" to help developer our fron end
+
 
 const loadedData = require('./data.json');
 
-const getCards = () => {
+export const getCards = () => {
 
-  const card = loadedData.cards.map( card => {
-    let userName = loadedData.usersById[card.ownerId].userName;
-    card.userName = userName;
-    return card;
+  return loadedData.cards;
+
+};
+
+
+
+export const getCardById = (id) => {
+
+  let selectedCard = loadedData.cards.find( card => {
+    return card.id === id
   });
 
-  return card;
+//  let userName = loadedData.usersById[selectedCard.ownerId].userName;
+//  selectedCard.userName = userName;
 
-}
+  return selectedCard;
+};
+
+export const getCommentsByCardId = (id) => {
+
+  let selectedCard = loadedData.cards.find( card => {
+    return card.id === id
+  });
+
+  let commentsById = selectedCard.commentsId.map( commentId => {
+      return loadedData.commentsById[commentId];
+
+    });
+  //});
+
+  //console.log('commentsById', commentsById)
+
+//  let userName = loadedData.usersById[selectedCard.ownerId].userName;
+//  selectedCard.userName = userName;
+
+  return commentsById;
+};
 
 
-export default getCards;
 /*
 export const data = `[
   "cards": [

@@ -4,6 +4,7 @@
       "id": "card_01_fjflg",
       "timeStamp": "15 m",
       "ownerId": "nance_01_hfkf",
+      "ownerUserName": "nance",
       "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
       "type": "SUN",
       "numberOfSupport": 2,
@@ -11,11 +12,16 @@
         "jane_02_fkgm",
         "elen_03_flgn",
       ],
+      "numberOfComments": 1,
+      "commentsId": [
+        "comm_01_dbejkk"
+      ],
     },
     {
       "id": "card_02_sdmns",
       "timeStamp": "23 m",
       "ownerId": "jane_02_fkgm",
+      "ownerUserName": "jane",
       "body": "uia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
       "type": "CLOUD",
       "numberOfSupport": 3,
@@ -24,45 +30,71 @@
         "elen_03_flgn",
         "james_04_sdmed",
       ],
+      "numberOfComments": 2,
+      "commentsId": [
+        "comm_02_djjff",
+        "comm_03_dsklerl",
+      ],
     },
     {
       "id": "card_03_grgs",
       "timeStamp": "48 m",
       "ownerId": "elen_03_flgn",
+      "ownerUserName": "elen",
       "body": "est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla",
       "type": "RAIN",
       "numberOfSupport": 1,
       "supportedUserId": [
         "nance_01_hfkf",
       ],
+      "numberOfComments": 3,
+      "commentsId": [
+        "comm_04_dsekr",
+        "comm_05_lksdlkr",
+        "comm_06_slkekf",
+      ],
     },
     {
       "id": "card_04_dsfbjer",
       "timeStamp": "1 h",
       "ownerId": "james_04_sdmed",
+      "ownerUserName": "james",
       "body": "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iurequis sunt voluptatem rerum illo velit",
       "type": "THUNDER",
       "numberOfSupport": 1,
       "supportedUserId": [
         "nance_01_hfkf",
       ],
+      "numberOfComments": 4,
+      "commentsId": [
+        "comm_07_dkjdjkr",
+        "comm_08_dlkflkg",
+        "comm_09_fgtr",
+        "comm_10_fdhyhj",
+      ],
     },
-    ,
     {
       "id": "card_05_dfgrt",
       "timeStamp": "2 h",
       "ownerId": "james_04_sdmed",
+      "ownerUserName": "james",
       "body": "ullam et saepe reiciendis voluptatem adipisci sit amet autem assumenda provident rerum culpa\nquis hic commodi nesciunt rem tenetur doloremque ipsam iurequis sunt voluptatem rerum illo velit",
       "type": "SUN",
       "numberOfSupport": 1,
       "supportedUserId": [
         "nance_01_hfkf",
+      ],
+      "numberOfComments": 2,
+      "commentsId": [
+        "comm_11_dkjdjkr",
+        "comm_12_dlkflkg",
       ],
     },
     {
       "id": "card_06_fjflg",
       "timeStamp": "3 h",
       "ownerId": "nance_01_hfkf",
+      "ownerUserName": "nance",
       "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
       "type": "SUN",
       "numberOfSupport": 2,
@@ -70,17 +102,27 @@
         "jane_02_fkgm",
         "elen_03_flgn",
       ],
+      "numberOfComments": 1,
+      "commentsId": [
+        "comm_13_dkjdjkr",
+      ],
     },
     {
       "id": "card_07_fjflg",
       "timeStamp": "5 h",
       "ownerId": "elen_03_flgn",
+      "ownerUserName": "elen",
       "body": "Today was really cool because I had a party at home. And the beauty is that I did not drink any kind of alcohol",
       "type": "THUNDER",
       "numberOfSupport": 2,
       "supportedUserId": [
         "jane_02_fkgm",
         "elen_03_flgn",
+      ],
+      "numberOfComments": 2,
+      "commentsId": [
+        "comm_14_dkjdjkr",
+        "comm_15_ddmlttt",
       ],
     },
   ],
@@ -104,5 +146,90 @@
       },
 
     },
+    "commentsById":
+      {
+        "comm_01_dbejkk": {
+          "userName": "jane",
+          "message": "I am a comment number 1",
+          "timeStamp": "1 h",
+        },
+        "comm_02_djjff": {
+          "userName": "nance",
+          "message": "I am a comment number 2",
+          "timeStamp": "2 h",
+        },
+        "comm_03_dsklerl": {
+          "userName": "nance",
+          "message": "I am a comment number 3",
+          "timeStamp": "3 h",
+        },
+        "comm_04_dsekr": {
+          "userName": "jane",
+          "message": "I am a comment number 4",
+          "timeStamp": "4 h",
+        },
+        "comm_05_lksdlkr": {
+          "userName": "elen",
+          "message": "I am a comment number 5",
+          "timeStamp": "5 h",
+        },
+        "comm_06_slkekf": {
+          "userName": "nance",
+          "message": "I am a comment number 6",
+          "timeStamp": "6 h",
+        },
+        "comm_07_dkjdjkr": {
+          "userName": "james",
+          "message": "I am a comment number 7",
+          "timeStamp": "7 h",
+        },
+        "comm_08_dlkflkg": {
+          "userName": "nance",
+          "message": "I am a comment number 8",
+          "timeStamp": "8 h",
+        },
+        "comm_09_fgtr": {
+          "userName": "nance",
+          "message": "I am a comment number 9",
+          "timeStamp": "9 h",
+        },
+        "comm_10_fdhyhj": {
+          "userName": "nance",
+          "message": "I am a comment number 10",
+          "timeStamp": "10 h",
+        },
+        "comm_11_dkjdjkr": {
+          "userName": "nance",
+          "message": "I am a comment number 11",
+          "timeStamp": "11 h",
+        },
+        "comm_12_dlkflkg": {
+          "userName": "nance",
+          "message": "I am a comment number 12",
+          "timeStamp": "12 h",
+        },
+        "comm_13_dkjdjkr": {
+          "userName": "nance",
+          "message": "I am a comment number 13",
+          "timeStamp": "13 h",
+        },
+        "comm_14_dkjdjkr": {
+          "userName": "nance",
+          "message": "I am a comment number 14",
+          "timeStamp": "14 h",
+        },
+        "comm_15_ddmlttt": {
+          "userName": "james",
+          "message": "I am a comment number 15",
+          "timeStamp": "15 h",
+        },
+
+
+
+
+
+
+      },
+
 
 }

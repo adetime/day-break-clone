@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ListView } from 'react-native';
 
 import { Card } from './common';
-import getCards from './../server/api';
+import { getCards } from './../server/api';
 
 
 class CardList extends Component {

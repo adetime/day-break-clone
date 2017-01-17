@@ -12,11 +12,15 @@ function Header({children, userName, timeStamp, style}) {
     nameContainerStyle,
     nameTextStyle,
     timeStampStyle,
+    iconStyle,
   } = styles;
 
   return (
     <View style={[containerStyle, style]}>
-      {children}
+      <View style={{marginRight: children ? 15 : 0}}>
+          {children}
+      </View>
+
       <View style={nameContainerStyle}>
         <Name style={nameTextStyle}>{userName}</Name>
       </View>
@@ -38,11 +42,14 @@ const styles = StyleSheet.create({
     */
 
   },
+  iconStyle: {
+  //  marginRight: margin ? 15 : 0,
+  },
   nameContainerStyle:{
     height: 30,
     flex: 1,
     justifyContent:'center',
-    paddingLeft: 15,
+    //paddingLeft: 15,
   },
   nameTextStyle: {
     color: '#A6AAAE',

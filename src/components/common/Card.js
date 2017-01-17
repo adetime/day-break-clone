@@ -6,8 +6,8 @@ class Card extends Component{
   constructor(props){
     super(props);
     this.state = {
-      supportCount: 0,
-      commentCount: 0,
+      supportCount: this.props.data.numberOfSupport, //-----Attention: Initiate with zero
+      commentCount: this.props.data.numberOfComments,
       isLiked: false,
     };
   }
@@ -20,7 +20,7 @@ class Card extends Component{
 
   addSupport = () => {
     // -------------- Attention: each user should support each card
-    // -------------- only one time. To be fixed with authetication rules 
+    // -------------- only one time. To be fixed with authetication rules
     this.setState({
       supportCount: ++this.state.supportCount,
       isLiked: true,
@@ -32,10 +32,10 @@ class Card extends Component{
   }
 
   render() {
-    const {type, userName, timeStamp, body } = this.props.data;
+    const {type, ownerUserName, timeStamp, body } = this.props.data;
     return(
       <View style={styles.container}>
-        <Header userName={userName} timeStamp={timeStamp}>
+        <Header userName={ownerUserName} timeStamp={timeStamp}>
           <MoodIcon type={type} />
         </Header>
 

@@ -8,13 +8,14 @@ import {
 
 import { Header } from './src/components/common';
 import CardList from './src/components/CardList';
-
+import CardDetail from  './src/components/CardDetail';
 class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Header userName='Home'/>
-        <CardList />
+        {/*<CardList />*/}
+        <CardDetail />
       </View>
     );
   }
