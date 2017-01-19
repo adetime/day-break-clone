@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 
-// Gets special text componets to DayBreak app design
+// Gets special text components to DayBreak app design
 import {
   Heading1 as BigName,
   Paragraph as NormalName,

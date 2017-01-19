@@ -1,112 +1,104 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { moodTypes, Button, BasicButton } from './';
+import { View, StyleSheet, Image } from 'react-native';
+import { moodTypes, BasicButton } from './';
 
-import {
-  Heading4 as Caption,
-} from './DBText';
+// Gets special text components to DayBreak app design
+import { Heading4 as Caption } from './DBText';
 
-
-const defaultColor = '#999999';
-
-function SocialBar({
+// Receives data and/or custom styles as props
+const SocialBar = ({
   type,
   supportCount,
   addSupport,
   commentCount,
   addComment,
-  isLiked,  
+  isLiked,
   vertical,
-  style,
-  supportMe,
-}){
+  containerStyle,
+}) => {
 
-
+  // Access the mood's status
   const moodStatus = moodTypes[type];
-  const {
-    containerStyle,
-    iconStyle,
-    socialSupport,
-    commentContainer,
-    captionStyle,
-  } = styles;
 
+  // Specifies the support icon based on mood's type
+  // and if the user already given its support
+  const supportIcon = (
+    isLiked ?
+    moodStatus.socialLikedImage :
+    moodStatus.socialImage
+  );
 
-  const source = isLiked ? moodStatus.socialLikedImage : moodStatus.socialImage;
+  // Takes the default comment icon
+  const commentIcon = require('./../../assets/comment.png');
 
+  // Defines the default caption color for buttons
+  const defaultColor = '#999999';
+
+  // Specifies the color of support tag based on mood's type
+  // and if the user already given its support
   const reactionColor = isLiked ? moodStatus.likedColor : defaultColor;
 
+  // Defines caption support style and text content
+  const captionSupportStyle = [styles.caption, { color: reactionColor}];
+  const captionSupportText = `${supportCount} ${moodStatus.socialTag}`;
+
+  // Defines caption comment style and text content
+  const captionCommentStyle = [styles.caption, { color: defaultColor}];
+  const captionCommentText = `${commentCount} COMMENTS`;
+
+  // Changes buttonStyle when in vertical mode
+  // to fit the design at CardDetail
   const buttonStyle = vertical ? {flexDirection: 'column'} : {};
 
-  const fakeButton = vertical ? null : <BasicButton onPress={addComment} containerStyle={{flex: 1}}/>;
-  //const verticalStyle = vertical ? {} : {justifyContent: 'space-between', borderTopWidth: 2, borderColor: '#C5C5C5',};
+  // Creates a clickable element to fill out the space between
+  // the two buttons when in the Card component
+  const fakeButton = (
+    vertical ?
+    null :
+    <BasicButton onPress={addComment} containerStyle={{flex: 1}}/>
+  );
 
-  //console.log('socialColor', socialColor)
-
-  const onSupport = supportMe ? supportMe : addSupport;
+  // Resulting component
   return(
-    <View style={[containerStyle, style]}>
+    <View style={[styles.container, containerStyle]}>
 
-      <BasicButton onPress={onSupport} containerStyle={buttonStyle}>
-        <Image source={source} style={iconStyle}></Image>
-        <Caption style={[captionStyle, { color: reactionColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Caption>
+      <BasicButton onPress={addSupport} containerStyle={buttonStyle}>
+        <Image source={supportIcon} style={styles.icon}></Image>
+        <Caption style={captionSupportStyle}>
+          {captionSupportText}
+        </Caption>
       </BasicButton>
 
       {fakeButton}
 
       <BasicButton onPress={addComment} containerStyle={buttonStyle}>
-        <Image source={require('./../../assets/comment.png')} style={iconStyle}></Image>
-        <Caption style={captionStyle}>{`${commentCount} COMMENTS`}</Caption>
-
+        <Image source={commentIcon} style={styles.icon}></Image>
+        <Caption style={captionCommentStyle}>
+          {captionCommentText}
+        </Caption>
       </BasicButton>
-
-
 
     </View>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     height: 60,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 7,
     marginHorizontal: 15,
-    //borderTopWidth: 2,
-    //borderColor: '#C5C5C5',
-
     borderTopWidth: 2,
     borderColor: '#C5C5C5',
-
-
-  //  borderWidth: 2,
-  //  borderColor: 'red',
   },
-  iconStyle: {
+  icon: {
     width: 20,
     height: 20,
-    //margin: 0,
   },
-  /*socialSupport:{
-    height: 30,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent:'space-around',
-    marginLeft: 15,
-    alignItems: 'center',
-  },
-  commentContainer:{
-    height: 30,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent:'center',
-    marginRight: 5,
-    alignItems: 'center',
-  },*/
-  captionStyle: {
-    color: defaultColor,
+  caption: {
     marginLeft: 20,
     marginRight: 20,
   },

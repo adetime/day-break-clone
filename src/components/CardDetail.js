@@ -57,11 +57,10 @@ class CardDetail extends Component {
                supportCount={1}
                addComment={() => Actions.commentCreate()}
                commentCount={3}
-               likeIt={() => {}}
                isLiked={false}
                type={type}
                vertical
-               style={socialBarStyle}
+               containerStyle={socialBarStyle}
             />
 
             {this.renderComments()}
