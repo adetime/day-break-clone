@@ -1,29 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import {
-  Paragraph,
-} from './DBText';
+// Gets custom text style for DayBreak
+import { Paragraph } from './DBText';
 
-const Body = ({text, style, numberOfLines }) => {
+// Receives data and/or custom styles as props
+const Body = ({text, numberOfLines, containerStyle, textStyle}) => {
+
+  // Resulting component
   return(
-    <View style={[styles.containerStyle, style]}>
+    <View style={[styles.container, containerStyle]}>
+
       <Paragraph
         numberOfLines={numberOfLines}
-        style={styles.textStyle}
+        style={[styles.text, textStyle]}
       >
-      {text}
-       </Paragraph>
+        {text}
+      </Paragraph>
+
     </View>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     marginVertical: 5,
-    //marginHorizontal: 20,
   },
-  textStyle: {
+  text: {
     color: 'black',
   },
 });

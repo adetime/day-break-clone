@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+
+import { Actions } from 'react-native-router-flux'; //-----Attention: to be moved to redux action creators
 
 import { Header, MoodIcon, Body, SocialBar } from './';
 
@@ -10,65 +11,69 @@ class Card extends Component{
     super(props);
     this.state = {
       supportCount: this.props.data.numberOfSupport, //-----Attention: Initiate with zero
-      commentCount: this.props.data.numberOfComments,
-      isLiked: false,
+      commentCount: this.props.data.numberOfComments,//-----Attention: Initiate with zero
+      currentUserLiked: false, //-----Attention: To be fetched from user authetication
     };
   }
 
-  likeIt = () => {
-    // Once liked, it is not possible deslike!
-    // It is a way to help supporting people.
-    this.setState({ isLiked: true });
-  }
-
+  // Handles the support button
   addSupport = () => {
     // -------------- Attention: each user should support each card
     // -------------- only one time. To be fixed with authetication rules
     this.setState({
       supportCount: ++this.state.supportCount,
-      isLiked: true,
+      currentUserLiked: true,
     });
+    //------- Attention: Need to mutate user database model
   }
 
+  // Handles navagation to CardDetail's screen
   showDetail = () => {
-    //this.setState({ commentCount: ++this.state.commentCount });
-    //Actions.cardDetail({addSupport: this.addSupport});
-    Actions.cardDetail({banana: "verde", supportCount: () => this.addSupport.bind(this)});
-    console.log('Actions', Actions)
+
+    // Tells to navegation module what the next scene is
+    Actions.cardDetail();
+    //------Attention: to be moved to redux action creators
   }
 
   render() {
-    const { containerStyle, headerStyle, bodyStyle } = styles;
-    const {type, ownerUserName, timeStamp, body } = this.props.data;
+    // Receives data to render a Card
+    const { type, ownerUserName, timeStamp, body } = this.props.data;
+
+    // Resulting component
     return(
-      <View style={containerStyle}>
+      <View style={styles.container}>
+
+        {/*
+          Wraps Header and Body of the Card with the showDetail() callback to
+          navegate the user to CardDetail as touched
+        */}
         <TouchableWithoutFeedback onPress={this.showDetail}>
           <View>
             <Header
               userName={ownerUserName}
               timeStamp={timeStamp}
-              style={headerStyle}
+              style={styles.header}
             >
               <MoodIcon type={type} />
             </Header>
-
             <Body
               numberOfLines={2}
               text={body}
-              style={bodyStyle}
+              containerStyle={styles.body}
             />
           </View>
-
         </TouchableWithoutFeedback>
 
-
+        {/*
+          Handles inside of SocialBar component
+          both addSupport() and showDetail() callbacks
+        */}
         <SocialBar
            addSupport={this.addSupport}
            supportCount={this.state.supportCount}
            addComment={this.showDetail}
            commentCount={this.state.commentCount}
-           likeIt={this.state.likeIt}
-           isLiked={this.state.isLiked}
+           isLiked={this.state.currentUserLiked}
            type={type}
         />
       </View>
@@ -76,8 +81,9 @@ class Card extends Component{
   }
 }
 
+// Defines default styles
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     backgroundColor: '#F5F5F5',
     marginLeft: 10,
     marginRight: 10,
@@ -89,14 +95,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3, // iOS only
     shadowRadius: 3, // iOS only
     alignSelf: 'stretch', // The card fills entire horizontal space
-                          // even on iPad, and a short given description
-                          // by the user
+                          // even on iPad, when a short description
+                          // is given by the user
   },
-  headerStyle: {
+  header: {
     paddingLeft: 15,
     paddingRight: 13,
   },
-  bodyStyle: {
+  body: {
     marginHorizontal: 20,
   },
 });

@@ -50,7 +50,7 @@ class CardDetail extends Component {
           <View style={containerStyle}>
 
             <Header userName={ownerUserName} style={headerStyle} small />
-            <Body text={body} style={bodyStyle} />
+            <Body text={body} containerStyle={bodyStyle} />
 
             <SocialBar
                addSupport={() => {}}
