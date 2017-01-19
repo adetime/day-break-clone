@@ -4,7 +4,8 @@ import { Actions } from 'react-native-router-flux';
 
 import { Header, MoodIcon, Body, SocialBar, Comment } from './common';
 
-import { getCardById, getCommentsByCardId } from './../server/api'; // ----- to be changed
+// ----- Attention: to be changed
+import { getCommentsByCardId } from './../server/api';
 
 class CardDetail extends Component {
   constructor(props) {
@@ -13,8 +14,10 @@ class CardDetail extends Component {
   }
 
   renderComments = () => {
-    const comments = getCommentsByCardId("card_07_fjflg");
+    const comments = getCommentsByCardId(this.props.card.id);
     let cont = 0;
+
+    // Maps each comment
     return comments.map( comment => {
       const { userName, timeStamp, message } = comment;
 
@@ -30,21 +33,30 @@ class CardDetail extends Component {
 
   render() {
 
-    console.log('props CardDetail: ', this.props)
-    console.log('--------------------------------------')
-    console.log('banana call: ', this.props.banana)
-    console.log('addSupport call: ', ()=>this.props.addSupport())
-    console.log('supportCount call: ', this.props.supportCount)
-    const data = getCardById("card_07_fjflg");
-    const { type, ownerUserName, timeStamp, body } = data;
+    // Gets card data
+    const {
+      type,
+      ownerUserName,
+      timeStamp,
+      body,
+      numberOfSupport,
+      numberOfComments
+    } = this.props.card;
 
-    const { containerStyle, headerStyle, bodyStyle, socialBarStyle, moodImageStyle } = styles;
+    // Access default styles
+    const {
+      containerStyle,
+      headerStyle,
+      bodyStyle,
+      socialBarStyle,
+      moodImageStyle
+    } = styles;
 
-    moodImage = require('./../assets/sun-detail.png');
 
+    // Resulting Component
     return(
       <View>
-        {/*<Image source={moodImage} style={moodImageStyle}/>*/}
+
         <ScrollView>
           <StatusBar hidden />
           <View style={containerStyle}>
@@ -54,9 +66,9 @@ class CardDetail extends Component {
 
             <SocialBar
                addSupport={() => {}}
-               supportCount={1}
+               supportCount={numberOfSupport}
                addComment={() => Actions.commentCreate()}
-               commentCount={3}
+               commentCount={numberOfComments}
                isLiked={false}
                type={type}
                vertical
@@ -67,20 +79,17 @@ class CardDetail extends Component {
 
           </View>
         </ScrollView>
+
       </View>
-
-
     );
   }
-
 }
 
+// Defines default styles
 const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: 'white',
     flex: 1,
-    //borderWidth: 4,
-    //borderColor: 'red',
   },
   headerStyle: {
     marginHorizontal: 20,
@@ -98,7 +107,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     alignSelf: 'center',
   },
-
 });
 
 export default CardDetail;

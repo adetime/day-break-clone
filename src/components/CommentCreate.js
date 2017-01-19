@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, StatusBar } from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 
 import { InputForm } from './common';
 
@@ -11,6 +11,7 @@ class CommentCreate extends Component {
   render() {
     return (
       <View>
+      
         <StatusBar hidden />
         <InputForm
          placeholder="Add a comment right here!"
@@ -18,6 +19,7 @@ class CommentCreate extends Component {
          reminderText={0} // ------- Attention: needs update
          submitButtonText="DONE"
         />
+
       </View>
     );
   }

@@ -6,15 +6,21 @@ import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
 import CommentCreate from './components/CommentCreate';
 
+//----------- Attention: Needs refactoring and simplification
+//----------- Attention: Needs refactoring and simplification
+
 const RouterComponent = () => {
+
+  // Gets default styles
   const {
     cardListContainerStyle,
     cardDetailContainerStyle,
     commentCreateContainerStyle,
   } = styles;
 
-  navigationBarBackgroundImage = require('./assets/sun-detail.png');
+  // Custom backButtonImage
   backButtonImage = require('./assets/white-back-button.png');
+
   // ---------- Attention: Take everything that is common to each scene and
   // ---------- pass to the Router component delivers as global
   return (
@@ -30,7 +36,6 @@ const RouterComponent = () => {
        navigationBarStyle={{backgroundColor: '#275B00', borderBottomWidth: 0}}
        duration={1}
        passProps
-
       />
 
       <Scene
@@ -57,8 +62,6 @@ const RouterComponent = () => {
         }}
         direction="vertical"
         duration={1}
-
-
       />
 
       <Scene
@@ -85,19 +88,17 @@ const RouterComponent = () => {
         }}
         direction="vertical"
         duration={1}
-        
-
       />
 
     </Router>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
   cardListContainerStyle: {
     paddingTop: 65,
     backgroundColor: '#275B00',
-
   },
   cardDetailContainerStyle: {
     paddingTop: 65,
@@ -107,7 +108,6 @@ const styles = StyleSheet.create({
     paddingTop: 65,
     backgroundColor: 'rgba(250,250,250,1)',
   },
-
 });
 
 export default RouterComponent;

@@ -22,7 +22,6 @@ class CardList extends Component {
     };
   }
 
-
   componentDidMount() {
     // Fetch the data and setState
     this.setState({
@@ -36,20 +35,19 @@ class CardList extends Component {
     return <Card data={oneCard} />;
   }
 
-
   render() {
     // Avoid to render empty section headers
     if (!this.state.loading){
       return (
         <View>
+
           <StatusBar hidden/>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderRow}
           />
+
         </View>
-
-
       );
     }else {
       // ----------------- Attention: to be changed by a spinning animation

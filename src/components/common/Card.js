@@ -31,7 +31,8 @@ class Card extends Component{
   showDetail = () => {
 
     // Tells to navegation module what the next scene is
-    Actions.cardDetail();
+    // And pass 'card' as props the next scene component
+    Actions.cardDetail({ card: this.props.data });
     //------Attention: to be moved to redux action creators
   }
 
