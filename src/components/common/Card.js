@@ -52,7 +52,7 @@ class Card extends Component{
             <Header
               userName={ownerUserName}
               timeStamp={timeStamp}
-              style={styles.header}
+              containerStyle={styles.header}
             >
               <MoodIcon type={type} />
             </Header>

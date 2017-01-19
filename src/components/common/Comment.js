@@ -1,28 +1,45 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import { Header, Body } from './';
 
+// Receives data and/or custom styles as props
+const Comment = ({
+  userName,
+  message,
+  timeStamp,
+  containerStyle,
+}) => {
 
-const Comment = ({userName, message, timeStamp}) => {
-  const { containerStyle, headerStyle } = styles;
+  // Resulting component
   return (
-    <View style={containerStyle}>
-      <Header userName={userName} timeStamp={timeStamp} style={headerStyle} small/>
+    <View style={[styles.container, containerStyle]}>
+      {/*
+        Uses a small Header and a Body
+      */}
+      <Header
+        userName={userName}
+        timeStamp={timeStamp}
+        containerStyle={styles.header}
+        small
+      />
       <Body text={message} />
+
     </View>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     borderTopWidth: 2,
     borderColor: '#C5C5C5',
     marginHorizontal: 20,
   },
-  headerStyle: {
+  header: {
     height: 20,
     marginTop: 8,
   }
 });
+
 export { Comment };

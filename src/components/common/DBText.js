@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, StyleSheet, Dimensions, PixelRatio  } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import normalize from './../../helpers/normalizeText';
 
+// Defines Special text componets to DayBreak app
 export const Heading1 = ({style, ...props}) => {
   return <Text style={[styles.h1, style]} {...props} />;
 }
@@ -18,6 +19,8 @@ export const Paragraph = ({style, ...props}) => {
   return <Text style={[styles.p, style]} {...props} />;
 }
 
+// Defines default styles normalized by
+// Dimensions and PixelRatio of the device's screen
 const styles = StyleSheet.create({
   title: {
     fontSize: normalize(33),

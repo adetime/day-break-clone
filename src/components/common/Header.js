@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 
+// Gets special text componets to DayBreak app design
 import {
   Heading1 as BigName,
   Paragraph as NormalName,
@@ -8,67 +9,83 @@ import {
 
 } from './DBText';
 
-function Header({children, userName, timeStamp, style, small}) {
-  const {
-    containerStyle,
-    nameContainerStyle,
-    nameTextStyle,
-    timeStampStyle,
-    iconStyle,
-  } = styles;
+// Receives data and/or custom styles as props
+const Header = ({
+  userName,
+  timeStamp,
+  children,
+  small,
+  containerStyle,
+  iconContainerStyle,
+  titleContainerStyle,
+  timeStampStyle,
+  titleTextStyle,
+}) => {
 
-  const Name = (
+  // Defines title's style based on 'small' property
+  const Title = (
     small ?
-    <NormalName style={{color: 'black',}}>{userName}</NormalName> :
-    <BigName style={nameTextStyle}>{userName}</BigName>
+    <NormalName style={[{color: 'black'}, titleTextStyle]}>{userName}</NormalName> :
+    <BigName style={[styles.titleText, titleTextStyle]}>{userName}</BigName>
   );
 
+  // Defines timeStamp's style based on 'small' property
+  const costumTimeStampStyle = (
+    small ?
+    [{color: 'black'}, timeStampStyle] :
+    [styles.timeStamp, timeStampStyle]
+  );
 
+  // Defines icon's style based on 'children' property
+  const costumIconContainerStyle = (
+    children ?
+    [{marginRight: 15}, iconContainerStyle] :
+    [styles.icon, iconContainerStyle]
+  );
 
-
+  // Resulting component
   return (
-    <View style={[containerStyle, style]}>
-      <View style={{marginRight: children ? 15 : 0}}>
-          {children}
+    <View style={[styles.container, containerStyle]}>
+
+      <View style={costumIconContainerStyle}>
+        {children}
       </View>
 
-      <View style={nameContainerStyle}>
-        {Name}
+      <View style={[styles.titleContainer, titleContainerStyle]}>
+        {Title}
       </View>
-      <TimeStamp style={small ? {color: 'black'} : timeStampStyle}>{timeStamp}</TimeStamp>
+
+      <TimeStamp style={costumTimeStampStyle}>
+        {timeStamp}
+       </TimeStamp>
+
     </View>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     height: 60,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 7,
-    //paddingLeft: 15,
-    //paddingRight: 13,
-    /*
-    */
-
   },
-  iconStyle: {
-  //  marginRight: margin ? 15 : 0,
+  icon: {
+    marginRight: 0,
   },
-  nameContainerStyle:{
+  titleContainer:{
     height: 30,
     flex: 1,
     justifyContent:'center',
-    //paddingLeft: 15,
   },
-  nameTextStyle: {
+  titleText: {
     color: '#A6AAAE',
   },
-  timeStampStyle: {
+  timeStamp: {
     color: '#B1B3B7',
   },
 });
-
 
 export { Header };

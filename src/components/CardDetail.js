@@ -49,7 +49,7 @@ class CardDetail extends Component {
           <StatusBar hidden />
           <View style={containerStyle}>
 
-            <Header userName={ownerUserName} style={headerStyle} small />
+            <Header userName={ownerUserName} containerStyle={headerStyle} small />
             <Body text={body} containerStyle={bodyStyle} />
 
             <SocialBar
