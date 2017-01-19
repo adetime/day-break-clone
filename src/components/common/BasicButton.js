@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableWithoutFeedback  } from 'react-native';
 
-const BasicButton = ({onPress, style, children}) => {
+const BasicButton = ({onPress, containerStyle, children}) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={[styles.containerStyle,style]}>
+      <View style={[styles.container,containerStyle]}>
         {children}
       </View>
     </TouchableWithoutFeedback>
@@ -13,7 +13,7 @@ const BasicButton = ({onPress, style, children}) => {
 };
 
 const styles = StyleSheet.create({
-  containerStyle: {
+  container: {
     //flex: 1,
     flexDirection: 'row',
     alignItems: 'center',

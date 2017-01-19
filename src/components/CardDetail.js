@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View , Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { View, Image, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 import { Header, MoodIcon, Body, SocialBar, Comment } from './common';
 
@@ -29,35 +30,46 @@ class CardDetail extends Component {
 
   render() {
 
+    console.log('props CardDetail: ', this.props)
+    console.log('--------------------------------------')
+    console.log('banana call: ', this.props.banana)
+    console.log('addSupport call: ', ()=>this.props.addSupport())
+    console.log('supportCount call: ', this.props.supportCount)
     const data = getCardById("card_07_fjflg");
     const { type, ownerUserName, timeStamp, body } = data;
 
-    const { containerStyle, headerStyle, bodyStyle, socialBarStyle } = styles;
+    const { containerStyle, headerStyle, bodyStyle, socialBarStyle, moodImageStyle } = styles;
+
+    moodImage = require('./../assets/sun-detail.png');
 
     return(
-      <ScrollView>
-        <StatusBar hidden />
-        <View style={containerStyle}>
+      <View>
+        {/*<Image source={moodImage} style={moodImageStyle}/>*/}
+        <ScrollView>
+          <StatusBar hidden />
+          <View style={containerStyle}>
 
-          <Header userName={ownerUserName} style={headerStyle} small />
-          <Body text={body} style={bodyStyle} />
+            <Header userName={ownerUserName} style={headerStyle} small />
+            <Body text={body} style={bodyStyle} />
 
-          <SocialBar
-             addSupport={() => {}}
-             supportCount={1}
-             addComment={() => {}}
-             commentCount={3}
-             likeIt={() => {}}
-             isLiked={false}
-             type={type}
-             vertical
-             style={socialBarStyle}
-          />
+            <SocialBar
+               addSupport={() => {}}
+               supportCount={1}
+               addComment={() => Actions.commentCreate()}
+               commentCount={3}
+               likeIt={() => {}}
+               isLiked={false}
+               type={type}
+               vertical
+               style={socialBarStyle}
+            />
 
-          {this.renderComments()}
+            {this.renderComments()}
 
-        </View>
-      </ScrollView>
+          </View>
+        </ScrollView>
+      </View>
+
 
     );
   }
@@ -81,6 +93,11 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     justifyContent: 'space-around',
     marginVertical: 30,
+  },
+  moodImageStyle: {
+    maxHeight: 500,
+    resizeMode: 'cover',
+    alignSelf: 'center',
   },
 
 });

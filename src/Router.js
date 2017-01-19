@@ -4,11 +4,21 @@ import { Scene, Router } from 'react-native-router-flux';
 
 import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
+import CommentCreate from './components/CommentCreate';
 
 const RouterComponent = () => {
-  const { cardListContainerStyle, cardDetailContainerStyle } = styles;
+  const {
+    cardListContainerStyle,
+    cardDetailContainerStyle,
+    commentCreateContainerStyle,
+  } = styles;
+
+  navigationBarBackgroundImage = require('./assets/sun-detail.png');
+  backButtonImage = require('./assets/white-back-button.png');
+  // ---------- Attention: Take everything that is common to each scene and
+  // ---------- pass to the Router component delivers as global
   return (
-    <Router>
+    <Router backButtonImage={backButtonImage} >
 
       <Scene
        key="cardList"
@@ -18,10 +28,12 @@ const RouterComponent = () => {
        titleWrapperStyle={{backgroundColor: '#275B00'}}
        titleStyle={{color: 'white', fontWeight: 'bold', fontSize: 22, alignSelf: 'flex-start'}}
        navigationBarStyle={{backgroundColor: '#275B00', borderBottomWidth: 0}}
+       duration={1}
+       passProps
 
-       />
+      />
 
-       <Scene
+      <Scene
         key="cardDetail"
         component={CardDetail}
         title="Share detail"
@@ -43,9 +55,40 @@ const RouterComponent = () => {
             ios: { top: 13, },
           }),
         }}
+        direction="vertical"
+        duration={1}
 
 
-        />
+      />
+
+      <Scene
+        key="commentCreate"
+        component={CommentCreate}
+        title="Add comment"
+        sceneStyle={commentCreateContainerStyle}
+        titleWrapperStyle={{
+          backgroundColor: '#275B00',
+          ...Platform.select({
+            ios: { top: 10, },
+          }),
+        }}
+        titleStyle={{color: 'white', fontSize: 19, alignSelf: 'flex-start'}}
+        navigationBarStyle={{
+          backgroundColor: '#275B00',
+          borderBottomWidth: 0,
+          justifyContent:'flex-start',
+        }}
+        leftButtonStyle={{
+          ...Platform.select({
+            ios: { top: 13, },
+          }),
+        }}
+        direction="vertical"
+        duration={1}
+        
+
+      />
+
     </Router>
   );
 };
@@ -59,6 +102,10 @@ const styles = StyleSheet.create({
   cardDetailContainerStyle: {
     paddingTop: 65,
     backgroundColor: 'white',
+  },
+  commentCreateContainerStyle: {
+    paddingTop: 65,
+    backgroundColor: 'rgba(250,250,250,1)',
   },
 
 });

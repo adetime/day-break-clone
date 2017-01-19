@@ -9,3 +9,5 @@ export * from './Button';
 export * from './BasicButton';
 export * from './Body';
 export * from './Comment';
+export * from './Input';
+export * from './InputForm';

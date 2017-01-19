@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, StyleSheet } from 'react-native';
+import {View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 import { Header, MoodIcon, Body, SocialBar } from './';
@@ -30,9 +30,10 @@ class Card extends Component{
     });
   }
 
-  addComment = () => {
+  showDetail = () => {
     //this.setState({ commentCount: ++this.state.commentCount });
-    Actions.cardDetail();
+    //Actions.cardDetail({addSupport: this.addSupport});
+    Actions.cardDetail({banana: "verde", supportCount: () => this.addSupport.bind(this)});
     console.log('Actions', Actions)
   }
 
@@ -41,24 +42,30 @@ class Card extends Component{
     const {type, ownerUserName, timeStamp, body } = this.props.data;
     return(
       <View style={containerStyle}>
-        <Header
-          userName={ownerUserName}
-          timeStamp={timeStamp}
-          style={headerStyle}
-        >
-          <MoodIcon type={type} />
-        </Header>
+        <TouchableWithoutFeedback onPress={this.showDetail}>
+          <View>
+            <Header
+              userName={ownerUserName}
+              timeStamp={timeStamp}
+              style={headerStyle}
+            >
+              <MoodIcon type={type} />
+            </Header>
 
-        <Body
-          numberOfLines={2}
-          text={body}
-          style={bodyStyle}
-        />
+            <Body
+              numberOfLines={2}
+              text={body}
+              style={bodyStyle}
+            />
+          </View>
+
+        </TouchableWithoutFeedback>
+
 
         <SocialBar
            addSupport={this.addSupport}
            supportCount={this.state.supportCount}
-           addComment={this.addComment}
+           addComment={this.showDetail}
            commentCount={this.state.commentCount}
            likeIt={this.state.likeIt}
            isLiked={this.state.isLiked}

@@ -19,6 +19,7 @@ function SocialBar({
   likeIt,
   vertical,
   style,
+  supportMe,
 }){
 
 
@@ -37,20 +38,24 @@ function SocialBar({
   const reactionColor = isLiked ? moodStatus.likedColor : defaultColor;
 
   const buttonStyle = vertical ? {flexDirection: 'column'} : {};
+
+  const fakeButton = vertical ? null : <BasicButton onPress={addComment} containerStyle={{flex: 1}}/>;
   //const verticalStyle = vertical ? {} : {justifyContent: 'space-between', borderTopWidth: 2, borderColor: '#C5C5C5',};
 
   //console.log('socialColor', socialColor)
 
-  //console.log('moodStatussocialTag', moodStatus.socialTagmoodStatus.socialTag)
+  const onSupport = supportMe ? supportMe : addSupport;
   return(
     <View style={[containerStyle, style]}>
 
-      <BasicButton onPress={addSupport} style={buttonStyle}>
+      <BasicButton onPress={onSupport} containerStyle={buttonStyle}>
         <Image source={source} style={iconStyle}></Image>
         <Caption style={[captionStyle, { color: reactionColor}]}>{`${supportCount} ${moodStatus.socialTag}`}</Caption>
       </BasicButton>
 
-      <BasicButton onPress={addComment} style={buttonStyle}>
+      {fakeButton}
+
+      <BasicButton onPress={addComment} containerStyle={buttonStyle}>
         <Image source={require('./../../assets/comment.png')} style={iconStyle}></Image>
         <Caption style={captionStyle}>{`${commentCount} COMMENTS`}</Caption>
 
