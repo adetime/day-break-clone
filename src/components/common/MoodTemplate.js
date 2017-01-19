@@ -1,17 +1,34 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-function MoodTemplate({ icon, backgroundColor }) {
-  //console.log('backgroundColor', backgroundColor)
+// Receives data and/or custom styles as props
+const MoodTemplate = ({
+  icon,
+  backgroundColor,
+  containerStyle,
+  iconStyle,
+}) => {
+
+  // Defines a costum mood's style
+  const moodStyle = [
+    styles.floatView,
+    { backgroundColor: backgroundColor},
+    containerStyle,
+  ];
+
+  // Resulting component
   return (
     <View style={styles.fakeBorder}>
-      <View style={[styles.floatView, { backgroundColor: backgroundColor} ]}>
-        <Image source={icon} style={styles.icon}></Image>
+
+      <View style={moodStyle}>
+        <Image source={icon} style={[styles.icon, iconStyle]}></Image>
       </View>
+
     </View>
   );
 };
 
+// Defines default styles
 const styles = StyleSheet.create({
   fakeBorder: {
     /*
@@ -28,7 +45,6 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 50,
-    /*backgroundColor: '#FDC41A',*/
     justifyContent: 'center',
     alignItems: 'center',
   },

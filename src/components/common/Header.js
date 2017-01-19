@@ -6,7 +6,6 @@ import {
   Heading1 as BigName,
   Paragraph as NormalName,
   Heading3 as TimeStamp,
-
 } from './DBText';
 
 // Receives data and/or custom styles as props
