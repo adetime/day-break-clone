@@ -17,9 +17,11 @@ const Input = ({
 }) => {
 
   // Was given a label ?
-  const labelText = ( label ?
-   <Text style={[styles.label, labelStyle]}> {label} </Text> :
-    null );
+  const labelText = (
+    label ?
+    <Text style={[styles.label, labelStyle]}> {label} </Text> :
+    null
+  );
 
   // Resulting component
   return (
