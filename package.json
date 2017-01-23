@@ -1,8 +1,8 @@
 {
-  "name": "rn-db-clone",
+  "name": "daybreak-clone (DEV)",
   "version": "0.0.0",
-  "description": "Hello Exponent!",
-  "author": null,
+  "description": "An awesome app!",
+  "author": "Adeildo Amorim" ,
   "private": true,
   "main": "main.js",
   "dependencies": {

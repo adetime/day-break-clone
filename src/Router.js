@@ -18,6 +18,9 @@ const RouterComponent = () => {
     commentCreateContainerStyle,
   } = styles;
 
+  // User name to get by authentication
+  const userName = "Alex";
+
   // Custom backButtonImage
   backButtonImage = require('./assets/white-back-button.png');
 
@@ -29,7 +32,7 @@ const RouterComponent = () => {
       <Scene
        key="cardList"
        component={CardList}
-       title="Hello, Alex!"
+       title={`Hello, ${userName}`}
        sceneStyle={cardListContainerStyle}
        titleWrapperStyle={{backgroundColor: '#275B00'}}
        titleStyle={{color: 'white', fontWeight: 'bold', fontSize: 22, alignSelf: 'flex-start'}}

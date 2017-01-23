@@ -1,7 +1,7 @@
 {
-  "name": "rn-db-clone",
-  "description": "An empty new project",
-  "slug": "rn-db-clone",
+  "name": "Daybreak-clone(live)",
+  "description": "An awesome app that is helping people to build a better drinkig culture",
+  "slug": "daybreak-clone",
   "privacy": "public",
   "sdkVersion": "12.0.0",
   "version": "1.0.0",
@@ -14,7 +14,7 @@
   },
   "loading": {
     "iconUrl": "https://s3.amazonaws.com/exp-brand-assets/ExponentEmptyManifest_192.png",
-    "hideExponentText": false
+    "hideExponentText": true
   },
   "packagerOpts": {
     "assetExts": ["ttf", "mp4"]
