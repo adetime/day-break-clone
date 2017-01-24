@@ -13,7 +13,7 @@ import Router from './src/Router';
 
 class App extends React.Component {
 
-  componentDidMount() {
+  componentWillMount() {
 
     const config = {
     apiKey: "AIzaSyCiHNJ_dKZXsqYDHVWtrsfLE0KMu31vP1w",
@@ -25,6 +25,7 @@ class App extends React.Component {
 
     firebase.initializeApp(config);
 
+    /*
     // Listen for authentication state to change.
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
@@ -83,15 +84,17 @@ class App extends React.Component {
       }
     };
 
+    */
+
   }
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
 
     return (
-      <View style={styles.container}>
+      <Provider store={store}>
         <Router />
-      </View>
+      </Provider>
     );
   }
 }
