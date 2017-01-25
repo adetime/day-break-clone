@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
-import { userAuthState } from './../actions'
+import { checkUserAuthState, loginWithFacebook } from './../actions'
 import { BasicButton } from './common';
 
 const daybreakLogo = require('./../assets/daybreak-white-logo.png');
@@ -11,9 +11,15 @@ const backgroundImage = require('./../assets/welcome-blue-background.png');
 
 
 class Login extends Component {
-  componentWillMount() {
-    this.props.userAuthState();
 
+  componentWillMount() {
+    this.props.checkUserAuthState();
+
+  }
+
+  onButtonPress() {
+    console.log('faceeeeeee')
+    this.props.loginWithFacebook();
   }
 
   render(){
@@ -31,7 +37,7 @@ class Login extends Component {
         <View style={styles.section}>
           <BasicButton
            containerStyle={styles.facebookContainer}
-           onPress={() => {}}
+           onPress={this.onButtonPress.bind(this)}
           >
             <Image style={styles.facebookLogo} source={facebookLogo}/>
             <Text style={styles.facebookText}>Continue with Facebook</Text>
@@ -124,4 +130,7 @@ const mapStateToProps = ({ auth }) => {
   return { user };
 };
 
-export default connect(mapStateToProps, { userAuthState })(Login);
+export default connect(mapStateToProps, {
+  checkUserAuthState,
+  loginWithFacebook,
+})(Login);
