@@ -58,7 +58,7 @@ class CardDetail extends Component {
       <View>
 
         <ScrollView>
-          <StatusBar hidden />
+          
           <View style={containerStyle}>
 
             <Header userName={ownerUserName} containerStyle={headerStyle} small />

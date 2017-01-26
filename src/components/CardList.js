@@ -41,7 +41,7 @@ class CardList extends Component {
       return (
         <View>
 
-          <StatusBar hidden/>
+        
           <ListView
             dataSource={this.state.dataSource}
             renderRow={this.renderRow}

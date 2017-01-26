@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 
+import Opening from './components/Opening';
 import Login from './components/Login';
 import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
@@ -36,11 +37,25 @@ const RouterComponent = () => {
 
       <Scene key="auth" >
         <Scene
+          key="Opening"
+          component={Opening}
+          navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
+
+
+
+
+        />
+
+        <Scene
           key="login"
           component={Login}
           navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
           sceneStyle={loginContainerStyle}
+
+
         />
+
+
       </Scene>
 
       <Scene key="main" >

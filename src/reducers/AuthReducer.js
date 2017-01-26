@@ -1,4 +1,6 @@
 import {
+  OPENING_APP,
+  INITIALIZE_APP_SERVER,
   CHECK_USER_AUTH_STATE,
   USER_AUTHENTICATED,
   USER_NOT_AUTHENTICATED,
@@ -7,7 +9,7 @@ import {
   LOGIN_WITH_EMAIL,
   LOGIN_WITH_EMAIL_SUCCESS,
   LOGIN_WITH_EMAIL_FAIL,
-  LOGIN_WITH_FACEBOOK,
+  ON_PRESS_LOGIN_WITH_FACEBOOK,
   LOGIN_WITH_FACEBOOK_SUCCESS,
   LOGIN_WITH_FACEBOOK_FAIL,
 } from './../actions/types';
@@ -24,6 +26,12 @@ const INITIAL_STATE = {
 
 export default ( state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case OPENING_APP:
+      return state;
+
+    case INITIALIZE_APP_SERVER:
+      return state;
+
     case CHECK_USER_AUTH_STATE:
       return {...state, loading: true };
 
@@ -48,7 +56,7 @@ export default ( state = INITIAL_STATE, action) => {
     case LOGIN_WITH_EMAIL_FAIL:
       return { ...state, ...INITIAL_STATE, error: 'Authentication failed: email or password don\'t match' };
 
-    case LOGIN_WITH_FACEBOOK:
+    case ON_PRESS_LOGIN_WITH_FACEBOOK:
       return { ...state, error: '' };
 
     case LOGIN_WITH_FACEBOOK_SUCCESS:

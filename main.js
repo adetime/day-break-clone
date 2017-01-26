@@ -1,6 +1,6 @@
 import Exponent from 'exponent';
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
@@ -93,17 +93,14 @@ class App extends React.Component {
 
     return (
       <Provider store={store}>
-        <Router />
+        <View style={{flex: 1}}>
+          <StatusBar hidden />
+          <Router />
+        </View>
       </Provider>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#275B00',
-    flex: 1,
-  },
-});
 
 Exponent.registerRootComponent(App);
