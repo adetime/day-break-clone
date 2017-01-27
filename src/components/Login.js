@@ -38,12 +38,14 @@ class Login extends Component {
           <BasicButton
            containerStyle={styles.facebookContainer}
            onPress={this.onButtonPress.bind(this)}
+           infoText="It's fast, and we NEVER post to Facebook."
+           infoTextStyle={styles.facebookInfo}
           >
             <Image style={styles.facebookLogo} source={facebookLogo}/>
             <Text style={styles.facebookText}>Continue with Facebook</Text>
             <View style={styles.facebookDummy} />
           </BasicButton>
-          <Text style={styles.facebookInfo}>It's fast, and we NEVER post to Facebook.</Text>
+
 
 
           <BasicButton

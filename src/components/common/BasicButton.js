@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, StyleSheet, TouchableWithoutFeedback  } from 'react-native';
+import { View, Text, StyleSheet, TouchableWithoutFeedback  } from 'react-native';
 
 // Receives data and/or custom styles as props
-const BasicButton = ({onPress, containerStyle, children}) => {
+const BasicButton = ({onPress, containerStyle, infoText, infoTextStyle, children}) => {
 
   // Resulting component
   return (
     <TouchableWithoutFeedback onPress={onPress}>
 
-      <View style={[styles.container,containerStyle]}>
-        {children}
+      <View style={styles.container}>
+        <View style={[styles.containerButton,containerStyle]}>
+          {children}
+        </View>
+        <Text style={[styles.infoText, infoTextStyle]}>{infoText}</Text>
       </View>
 
     </TouchableWithoutFeedback>
@@ -19,10 +22,16 @@ const BasicButton = ({onPress, containerStyle, children}) => {
 // Defines default styles
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+  },
+  containerButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     height: 45,
+  },
+  infoText: {
+    marginTop: 3,
   },
 });
 

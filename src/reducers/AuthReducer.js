@@ -27,13 +27,13 @@ const INITIAL_STATE = {
 export default ( state = INITIAL_STATE, action) => {
   switch (action.type) {
     case OPENING_APP:
-      return state;
+      return {...state, loading: true };
 
     case INITIALIZE_APP_SERVER:
       return state;
 
     case CHECK_USER_AUTH_STATE:
-      return {...state, loading: true };
+      return state;
 
     case USER_AUTHENTICATED:
       return { ...state, user: action.payload, loading: false };
@@ -60,7 +60,10 @@ export default ( state = INITIAL_STATE, action) => {
       return { ...state, error: '' };
 
     case LOGIN_WITH_FACEBOOK_SUCCESS:
-      return { ...state, ...INITIAL_STATE, user: action.payload };
+      // Do not need to mutate state because firebase will automatically
+      // trigger the observer firebase.auth().onAuthStateChanged().
+      // So, the userAuthenticated() actions will be triggered.
+      return state;
 
     case LOGIN_WITH_FACEBOOK_FAIL:
       return { ...state, ...INITIAL_STATE, error: 'Unable to authencticate with Facebook' };

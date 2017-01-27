@@ -56,13 +56,12 @@ export const checkUserAuthState = () => {
     // Listen for authentication state to change.
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
-        console.log("You are authenticated now!");
+        console.log("You already are authenticated!");
         // Show user content
         userAuthenticated(dispatch, user);
 
-
       } else {
-        console.log("You have to be authenticated!");
+        console.log("You need to be authenticated!");
         // Ask for user log in
         userNotAuthenticated(dispatch);
       }
@@ -95,7 +94,7 @@ export const userAuthenticated = (dispatch, user) => {
 
 
 export const onPressLoginWithFacebook = () => {
-  console.log('action called')
+  console.log('action to login with facebook called')
 
   return (dispatch) => {
     dispatch( { type: ON_PRESS_LOGIN_WITH_FACEBOOK } );
@@ -110,55 +109,47 @@ tryToLoginWithFacebook = async (dispatch) => {
     { permissions: ['public_profile', 'email'] }
   );
 
-  console.log('type', type)
-  console.log('token', token)
-
   if (type === 'success') {
     // Build Firebase credential with the Facebook access token.
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
 
-    // Get the user's name using Facebook's Graph API
-    const response = await fetch(
-      `https://graph.facebook.com/me?access_token=${token}`);
-
-    const {
-      name,
-      id,
-      picture,  // not working
-      age_range, // not working
-      user_birthday // not working
-    } = await response.json();
-
     // Sign in with credential from the Facebook user.
-    firebase.auth().signInWithCredential(credential)
-      .then((result) => {
+    try {
+      await firebase.auth().signInWithCredential(credential);
 
-        let user = firebase.auth().currentUser;
-        console.log('result =', result)
+        console.log('signInWithCredential success')
+        console.log('Now, you are just authenticated')
 
-        if (user != null) {
-          user.providerData.forEach(function (profile) {
-            console.log("Sign-in provider: "+profile.providerId);
-            console.log("  Provider-specific UID: "+profile.uid);
-            console.log("  Name: "+profile.displayName);
-            console.log("  Email: "+profile.email);
-            console.log("  Photo URL: "+profile.photoURL);
-          });
-        }
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        loginWithFacebookFail(dispatch, error);
-      });
+        await loginWithFacebookSuccess();
+
+    } catch(error) {
+      loginWithFacebookFail(dispatch, error);
+    }
   }
 };
 
-export const loginWithFacebookSuccess = (dispatch) => {
+export const loginWithFacebookSuccess = async () => {
+  try {
+    let user = await firebase.auth().currentUser;
+    console.log('user = ', user)
+    console.log('loginWithFacebookSuccess')
+
+    if (user != null) {
+      await user.providerData.forEach((profile) => {
+        console.log("  Name: "+profile.displayName);
+        console.log("  Email: "+profile.email);
+        console.log("  Photo URL: "+profile.photoURL);
+      });
+    };
+  } catch(error){
+    // Handle errors here
+
+  }
   return (dispatch) => {
     dispatch({
-      type: LOGIN_WITH_FACEBOOK_FAIL,
-      payload: error,
+      type: LOGIN_WITH_FACEBOOK_SUCCESS,
     });
+
   };
 };
 
