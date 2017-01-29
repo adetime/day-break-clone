@@ -4,8 +4,8 @@ import {
   CHECK_USER_AUTH_STATE,
   USER_AUTHENTICATED,
   USER_NOT_AUTHENTICATED,
-  EMAIL_GIVEN,
-  PASSWORD_GIVEN,
+  ON_CHANGE_EMAIL,
+  ON_CHANGE_PASSWORD,
   ON_PRESS_LOGIN_WITH_EMAIL,
   ON_SUBMIT_LOGIN_WITH_EMAIL,
   LOGIN_WITH_EMAIL_SUCCESS,
@@ -44,10 +44,10 @@ export default ( state = INITIAL_STATE, action) => {
     case ON_PRESS_LOGIN_WITH_EMAIL:
       return state;
 
-    case EMAIL_GIVEN:
+    case ON_CHANGE_EMAIL:
       return { ...state, email: action.payload };
 
-    case PASSWORD_GIVEN:
+    case ON_CHANGE_PASSWORD:
       return { ...state, password: action.payload };
 
     case ON_SUBMIT_LOGIN_WITH_EMAIL:

@@ -5,8 +5,8 @@ export const USER_AUTHENTICATED = 'user_authenticated';
 export const USER_NOT_AUTHENTICATED = 'user_not_authenticated';
 
 export const ON_PRESS_LOGIN_WITH_EMAIL = 'on_press_login_with_email';
-export const EMAIL_GIVEN = 'email_given';
-export const PASSWORD_GIVEN = 'password_given';
+export const ON_CHANGE_EMAIL = 'on_change_email';
+export const ON_CHANGE_PASSWORD = 'on_change_password';
 export const ON_SUBMIT_LOGIN_WITH_EMAIL = 'on_submit_login_with_email';
 export const LOGIN_WITH_EMAIL_SUCCESS = 'login_with_email_success';
 export const LOGIN_WITH_EMAIL_FAIL = 'login_with_email_fail';

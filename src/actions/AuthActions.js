@@ -9,8 +9,8 @@ import {
   USER_AUTHENTICATED,
   USER_NOT_AUTHENTICATED,
   ON_PRESS_LOGIN_WITH_EMAIL,
-  EMAIL_GIVEN,
-  PASSWORD_GIVEN,
+  ON_CHANGE_EMAIL,
+  ON_CHANGE_PASSWORD,
   ON_SUBMIT_LOGIN_WITH_EMAIL,
   LOGIN_WITH_EMAIL_SUCCESS,
   LOGIN_WITH_EMAIL_FAIL,
@@ -56,10 +56,11 @@ export const checkUserAuthState = () => {
 
     //let {currentUser} = firebase.auth();
 
-    // Listen for authentication state to change.
+    // Listen for authentication state to change in Real Time.
     firebase.auth().onAuthStateChanged((user) => {
       if (user != null) {
         console.log("You already are authenticated!");
+        console.log("user = ", user);
         // Show user content
         userAuthenticated(dispatch, user);
 
@@ -186,6 +187,60 @@ export const onPressLoginWithEmail = () => {
   Actions.loginWithEmail();
 
   return (dispatch) => {
-    dispatch( { type: ON_PRESS_LOGIN_WITH_EMAIL } );    
+    dispatch( { type: ON_PRESS_LOGIN_WITH_EMAIL } );
   };
+};
+
+export const onChangeEmail = (text) => {
+  return {
+    type: ON_CHANGE_EMAIL,
+    payload: text,
+  };
+};
+
+export const onChangePassword = (text) => {
+  return {
+    type: ON_CHANGE_PASSWORD,
+    payload: text,
+  };
+};
+
+
+export const onSubmitLoginWithEmail = ({email, password}) => {
+
+  return (dispatch) => {
+    dispatch({ type: ON_PRESS_LOGIN_WITH_FACEBOOK });
+    tryToLoginWithEmail(dispatch, {email, password});
+
+  };
+};
+
+export const tryToLoginWithEmail = async (dispatch, {email, password}) => {
+  console.log('inside')
+  const auth = firebase.auth();
+
+  try {
+    // Try to signing a Exiting user and return a promise
+    await auth.signInWithEmailAndPassword(email, password);
+  } catch(error){
+    console.log('try signing error = ', error.message)
+    console.log('signing error code = ', error.code)
+    if(error.code === 'auth/user-not-found'){
+      console.log('cool, we will create a user for you')
+      // if user do not exist, create and account now
+
+      try{
+        await auth.createUserWithEmailAndPassword(email, password);
+      } catch(error) {
+        // deal error
+        console.log('create signing error = ', error.message)
+        console.log('create error code = ', error.code)
+      }
+    }
+
+
+
+  }
+
+
 };

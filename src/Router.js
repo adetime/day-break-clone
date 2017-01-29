@@ -157,10 +157,10 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ auth }) => {
   //console.log('auth ----------------------------------------------')
-  console.log(auth)
-  const { user } = auth;
-  console.log('user ----------------------------------------------')
-  console.log(user)
+  //console.log(auth)
+  //const { user } = auth;
+  //console.log('user ----------------------------------------------')
+  //console.log(user)
   return {};//{ displayName: user.displayName };
 };
 

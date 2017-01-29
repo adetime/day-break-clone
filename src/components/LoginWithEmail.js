@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import { View, Text, StyleSheet, Image, StatusBar, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 
-import { onSubmitLoginWithEmail } from './../actions'
+import { onChangeEmail, onChangePassword, onSubmitLoginWithEmail } from './../actions'
 import { BasicButton, Input } from './common';
 
 const daybreakLogo = require('./../assets/daybreak-white-logo.png');
@@ -13,14 +13,30 @@ const { width, height } = Dimensions.get('window');
 class LoginWithEmail extends Component {
 
   componentWillMount() {
-
-
   }
 
-  onPressSubmit() {
-    console.log('email submited')
-    //this.props.onSubmitLoginWithEmail();
+  onPressSubmit = () => {
+
+    const { email, password } = this.props;
+
+    console.log('email submited = ', email, password )
+
+    this.props.onSubmitLoginWithEmail({ email, password });
   }
+
+  onChangeEmail = (text) => {
+    //console.log('email is changing', text)
+    this.props.onChangeEmail(text);
+
+    console.log('current email = ', this.props.email)
+  }
+
+  onChangePassword = (text) => {
+    //console.log('password is changing')
+    this.props.onChangePassword(text);
+  }
+
+
 
   render(){
     return (
@@ -47,6 +63,7 @@ class LoginWithEmail extends Component {
          autoCapitalize='none'
          autoCorrect={false}
          underlineColorAndroid='transparent'
+         onChangeText={this.onChangeEmail}
         />
 
         <Input
@@ -60,6 +77,7 @@ class LoginWithEmail extends Component {
          autoCorrect={false}
          underlineColorAndroid='transparent'
          secureTextEntry
+         onChangeText={this.onChangePassword}
         />
 
 
@@ -67,7 +85,7 @@ class LoginWithEmail extends Component {
 
         <BasicButton
          containerStyle={styles.submitContainer}
-         onPress={() => {}}
+         onPress={this.onPressSubmit}
         >
           <Text style={styles.submitText}>Log in</Text>
         </BasicButton>
@@ -139,12 +157,15 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ auth }) => {
-  const { user } = auth;
-  return { user };
+  const { email, password, error } = auth;
+  return { email, password, error };
 };
 
 export default connect(
   mapStateToProps,
   {
+    onChangeEmail,
+    onChangePassword,
+    onSubmitLoginWithEmail
 
   })(LoginWithEmail);
