@@ -1,8 +1,8 @@
 import React, { Component} from 'react';
-import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar, Alert } from 'react-native';
 import { connect } from 'react-redux';
 
-import { onPressLoginWithFacebook } from './../actions'
+import { onPressLoginWithFacebook, onPressLoginWithEmail } from './../actions'
 import { BasicButton } from './common';
 
 const daybreakLogo = require('./../assets/daybreak-white-logo.png');
@@ -17,9 +17,16 @@ class Login extends Component {
 
   }
 
-  onButtonPress() {
+  onPressFacebookButton = () => {
     console.log('faceeeeeee')
     this.props.onPressLoginWithFacebook();
+  }
+
+  onPressEmailButton = () => {
+    console.log('eamilllll')
+    //Alert.alert('Cool, give email and password')
+    this.props.onPressLoginWithEmail();
+    //this.props.onPressLoginWithFacebook();
   }
 
   render(){
@@ -37,7 +44,7 @@ class Login extends Component {
         <View style={styles.section}>
           <BasicButton
            containerStyle={styles.facebookContainer}
-           onPress={this.onButtonPress.bind(this)}
+           onPress={this.onPressFacebookButton}
            infoText="It's fast, and we NEVER post to Facebook."
            infoTextStyle={styles.facebookInfo}
           >
@@ -50,7 +57,7 @@ class Login extends Component {
 
           <BasicButton
            containerStyle={styles.emailContainer}
-           onPress={() => {}}
+           onPress={this.onPressEmailButton}
           >
             <Text style={styles.emailText}>Continue with Email</Text>
           </BasicButton>
@@ -136,4 +143,5 @@ export default connect(
   mapStateToProps,
   {
     onPressLoginWithFacebook,
+    onPressLoginWithEmail,
   })(Login);

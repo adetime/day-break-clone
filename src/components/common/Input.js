@@ -5,6 +5,7 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 const Input = ({
   label,
   placeholder,
+  placeholderTextColor,
   value,
   onChangeText,
   secureTextEntry,
@@ -14,7 +15,10 @@ const Input = ({
   inputStyle,
   labelStyle,
   containerStyle,
+  ...props
 }) => {
+
+  console.log('inputStyle', inputStyle)
 
   // Was given a label ?
   const labelText = (
@@ -30,6 +34,7 @@ const Input = ({
       {labelText}
 
       <TextInput
+        {...props}
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
@@ -38,6 +43,7 @@ const Input = ({
         autoCorrect={autoCorrect}
         maxLenght={maxLenght}
         style={[styles.input, inputStyle]}
+        placeholderTextColor={placeholderTextColor}
       />
 
     </View>
@@ -62,10 +68,14 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     flex: 1,
   },
+  placeholderTextColor: {
+    //color: 'rgba(115,115,115,1)',
+    color: 'red',
+  },
   container: {
     height: 40,
     flex: 1,
-    flexDirection: 'row',
+    //flexDirection: 'row',
     justifyContent: 'flex-start',
     marginHorizontal: 20,
     borderBottomWidth: 1,

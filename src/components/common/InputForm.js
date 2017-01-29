@@ -5,6 +5,7 @@ import { Input, BasicButton } from './';
 
 // Receives data and/or custom styles as props
 const InputForm = ({
+  items,
   placeholder,
   maxLenght,
   reminderText,
@@ -18,8 +19,18 @@ const InputForm = ({
   submitButtonTextStyle,
 }) => {
 
+
   // Defines remider ratio
-  const reminderRatio = `${reminderText}/${maxLenght}`;
+  const reminderRatio = (
+    maxLenght ?
+    (
+      <View style={[styles.reminderContainer, reminderContainerStyle]}>
+        <Text style={[styles.reminderText, reminderTextStyle]}>
+          {`${reminderText}/${maxLenght}`}
+        </Text>
+      </View>
+    ) : null
+  );
 
   // Resulting component
   return (
@@ -33,11 +44,7 @@ const InputForm = ({
       </View>
 
       <View style={[styles.submitContainer, submitContainerStyle]}>
-        <View style={[styles.reminderContainer, reminderContainerStyle]}>
-          <Text style={[styles.reminderText, reminderTextStyle]}>
-            {reminderRatio}
-          </Text>
-        </View>
+        {reminderRatio}
 
         <BasicButton containerStyle={[styles.submitButton, submitButtonStyle]}>
           <Text style={[styles.submitButtonText, submitButtonTextStyle]}>

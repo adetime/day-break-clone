@@ -6,7 +6,8 @@ import {
   USER_NOT_AUTHENTICATED,
   EMAIL_GIVEN,
   PASSWORD_GIVEN,
-  LOGIN_WITH_EMAIL,
+  ON_PRESS_LOGIN_WITH_EMAIL,
+  ON_SUBMIT_LOGIN_WITH_EMAIL,
   LOGIN_WITH_EMAIL_SUCCESS,
   LOGIN_WITH_EMAIL_FAIL,
   ON_PRESS_LOGIN_WITH_FACEBOOK,
@@ -20,7 +21,6 @@ const INITIAL_STATE = {
   password: '',
   error: '',
   loading: false,
-
 };
 
 
@@ -41,14 +41,17 @@ export default ( state = INITIAL_STATE, action) => {
     case USER_NOT_AUTHENTICATED:
       return { ...state, user: null, loading: false };
 
+    case ON_PRESS_LOGIN_WITH_EMAIL:
+      return state;
+
     case EMAIL_GIVEN:
       return { ...state, email: action.payload };
 
     case PASSWORD_GIVEN:
       return { ...state, password: action.payload };
 
-    case LOGIN_WITH_EMAIL:
-      return { ...state, loading: true, error: '' };
+    case ON_SUBMIT_LOGIN_WITH_EMAIL:
+        return { ...state, loading: true, error: '' };
 
     case LOGIN_WITH_EMAIL_SUCCESS:
       return { ...state, ...INITIAL_STATE, user: action.payload };

@@ -1,9 +1,11 @@
 import React from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
+import { connect } from 'react-redux';
 
 import Opening from './components/Opening';
 import Login from './components/Login';
+import LoginWithEmail from './components/LoginWithEmail';
 import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
 import CommentCreate from './components/CommentCreate';
@@ -20,6 +22,9 @@ const RouterComponent = () => {
     commentCreateContainerStyle,
     loginContainerStyle,
   } = styles;
+
+  //console.log('props', props)
+  //console.log('props.user', props.user)
 
   // User name to get by authentication
   const userName = "Alex";
@@ -40,10 +45,6 @@ const RouterComponent = () => {
           key="Opening"
           component={Opening}
           navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
-
-
-
-
         />
 
         <Scene
@@ -51,9 +52,16 @@ const RouterComponent = () => {
           component={Login}
           navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
           sceneStyle={loginContainerStyle}
-
-
         />
+
+        <Scene
+          key="loginWithEmail"
+          component={LoginWithEmail}
+          navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
+          sceneStyle={loginContainerStyle}
+        />
+
+
 
 
       </Scene>
@@ -147,4 +155,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RouterComponent;
+const mapStateToProps = ({ auth }) => {
+  //console.log('auth ----------------------------------------------')
+  console.log(auth)
+  const { user } = auth;
+  console.log('user ----------------------------------------------')
+  console.log(user)
+  return {};//{ displayName: user.displayName };
+};
+
+export default connect(mapStateToProps, {})(RouterComponent);
