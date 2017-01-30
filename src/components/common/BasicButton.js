@@ -11,17 +11,23 @@ const BasicButton = ({
   children
 }) => {
 
+  const renderInfoText = (
+    infoText ?
+    <Text style={[styles.infoText, infoTextStyle]}>{infoText}</Text> :
+    null
+  );
+
   // Resulting component
   return (
     <TouchableWithoutFeedback onPress={onPress}>
 
       <View style={[styles.container, parentStyle]}>
-      
+
         <View style={[styles.containerButton, style]}>
           {children}
         </View>
 
-        <Text style={[styles.infoText, infoTextStyle]}>{infoText}</Text>
+        {renderInfoText}
 
       </View>
 
@@ -38,7 +44,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 45,
   },
   infoText: {
     marginTop: 3,

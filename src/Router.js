@@ -8,6 +8,7 @@ import Login from './components/Login';
 import LoginWithEmail from './components/LoginWithEmail';
 import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
+import MoodChoice from './components/MoodChoice';
 import CommentCreate from './components/CommentCreate';
 
 //----------- Attention: Needs refactoring and simplification
@@ -21,6 +22,7 @@ const RouterComponent = () => {
     cardDetailContainerStyle,
     commentCreateContainerStyle,
     loginContainerStyle,
+    moodChoiceContainerStyle,
   } = styles;
 
   //console.log('props', props)
@@ -74,6 +76,32 @@ const RouterComponent = () => {
          sceneStyle={cardListContainerStyle}
          titleStyle={{color: 'white', fontWeight: 'bold', fontSize: 22, alignSelf: 'flex-start'}}
          navigationBarStyle={{backgroundColor: 'transparent', borderBottomWidth: 0}}
+
+        />
+
+        <Scene
+         key="moodChoice"
+         component={MoodChoice}
+         title="Capture mood"
+         sceneStyle={moodChoiceContainerStyle}
+         titleWrapperStyle={{
+           backgroundColor: '#rgba(41,46,79,1)',
+           ...Platform.select({
+             ios: { top: 10, },
+           }),
+         }}
+         titleStyle={{color: 'white', fontSize: 19, alignSelf: 'flex-start'}}
+         navigationBarStyle={{
+           backgroundColor: '#rgba(41,46,79,1)',
+           borderBottomWidth: 0,
+           justifyContent:'flex-start',
+         }}
+         leftButtonStyle={{
+           ...Platform.select({
+             ios: { top: 13, },
+           }),
+         }}
+         direction="vertical"
 
         />
 
@@ -148,6 +176,10 @@ const styles = StyleSheet.create({
   commentCreateContainerStyle: {
     paddingTop: 65,
     backgroundColor: 'rgba(250,250,250,1)',
+  },
+  moodChoiceContainerStyle: {
+    paddingTop: 65,
+    backgroundColor: 'rgba(41,46,79,1)',
   },
   loginContainerStyle: {
     //paddingTop: 65,

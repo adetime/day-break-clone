@@ -11,6 +11,8 @@ import {
 import { Card, BasicButton } from './common';
 import { getCards } from './../server/api';
 
+import { Actions } from 'react-native-router-flux'; // to be moved to redux
+
 createCardIcon = require('./../assets/create-card-icon-drop-shadow.png');
 
 class CardList extends Component {
@@ -39,7 +41,8 @@ class CardList extends Component {
   }
 
   onPressCreateCard = () => {
-    Alert.alert('Some day I will create a Card')
+    //Alert.alert('Some day I will create a Card')
+    Actions.moodChoice();
   };
 
   // Render one ListView row for each Card
