@@ -55,14 +55,14 @@ const SocialBar = ({
   const fakeButton = (
     vertical ?
     null :
-    <BasicButton onPress={addComment} containerStyle={{flex: 1}}/>
+    <BasicButton onPress={addComment} style={{flex: 1}}/>
   );
 
   // Resulting component
   return(
     <View style={[styles.container, containerStyle]}>
 
-      <BasicButton onPress={addSupport} containerStyle={buttonStyle}>
+      <BasicButton onPress={addSupport} style={buttonStyle}>
         <Image source={supportIcon} style={styles.icon}></Image>
         <Caption style={captionSupportStyle}>
           {captionSupportText}
@@ -71,7 +71,7 @@ const SocialBar = ({
 
       {fakeButton}
 
-      <BasicButton onPress={addComment} containerStyle={buttonStyle}>
+      <BasicButton onPress={addComment} style={buttonStyle}>
         <Image source={commentIcon} style={styles.icon}></Image>
         <Caption style={captionCommentStyle}>
           {captionCommentText}

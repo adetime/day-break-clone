@@ -43,7 +43,7 @@ class Login extends Component {
         {/* Signing up choice */}
         <View style={styles.section}>
           <BasicButton
-           containerStyle={styles.facebookContainer}
+           style={styles.facebookContainer}
            onPress={this.onPressFacebookButton}
            infoText="It's fast, and we NEVER post to Facebook."
            infoTextStyle={styles.facebookInfo}
@@ -56,7 +56,7 @@ class Login extends Component {
 
 
           <BasicButton
-           containerStyle={styles.emailContainer}
+           style={styles.emailContainer}
            onPress={this.onPressEmailButton}
           >
             <Text style={styles.emailText}>Continue with Email</Text>
