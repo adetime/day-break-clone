@@ -9,6 +9,7 @@ import LoginWithEmail from './components/LoginWithEmail';
 import CardList from './components/CardList';
 import CardDetail from './components/CardDetail';
 import MoodChoice from './components/MoodChoice';
+import CardCreate from './components/CardCreate';
 import CommentCreate from './components/CommentCreate';
 
 //----------- Attention: Needs refactoring and simplification
@@ -82,6 +83,32 @@ const RouterComponent = () => {
         <Scene
          key="moodChoice"
          component={MoodChoice}
+         title="Capture mood"
+         sceneStyle={moodChoiceContainerStyle}
+         titleWrapperStyle={{
+           backgroundColor: '#rgba(41,46,79,1)',
+           ...Platform.select({
+             ios: { top: 10, },
+           }),
+         }}
+         titleStyle={{color: 'white', fontSize: 19, alignSelf: 'flex-start'}}
+         navigationBarStyle={{
+           backgroundColor: '#rgba(41,46,79,1)',
+           borderBottomWidth: 0,
+           justifyContent:'flex-start',
+         }}
+         leftButtonStyle={{
+           ...Platform.select({
+             ios: { top: 13, },
+           }),
+         }}
+         direction="vertical"
+
+        />
+
+        <Scene
+         key="cardCreate"
+         component={CardCreate}
          title="Capture mood"
          sceneStyle={moodChoiceContainerStyle}
          titleWrapperStyle={{

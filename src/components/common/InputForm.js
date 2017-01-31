@@ -7,7 +7,8 @@ import { Input, BasicButton } from './';
 const InputForm = ({
   items,
   placeholder,
-  maxLenght,
+  onChangeText,
+  maxLength,
   reminderText,
   submitButtonText,
   containerStyle,
@@ -17,16 +18,17 @@ const InputForm = ({
   reminderTextStyle,
   submitButtonStyle,
   submitButtonTextStyle,
+  ...props
 }) => {
 
 
   // Defines remider ratio
   const reminderRatio = (
-    maxLenght ?
+    maxLength ?
     (
       <View style={[styles.reminderContainer, reminderContainerStyle]}>
         <Text style={[styles.reminderText, reminderTextStyle]}>
-          {`${reminderText}/${maxLenght}`}
+          {`${reminderText}/${maxLength}`}
         </Text>
       </View>
     ) : null
@@ -38,15 +40,17 @@ const InputForm = ({
 
       <View style={[styles.inputContainer, inputContainerStyle]}>
         <Input
+         {...props}
          placeholder={placeholder}
-         maxLenght={maxLenght}
+         maxLength={maxLength}
+         onChangeText={onChangeText}
         />
       </View>
 
       <View style={[styles.submitContainer, submitContainerStyle]}>
         {reminderRatio}
 
-        <BasicButton containerStyle={[styles.submitButton, submitButtonStyle]}>
+        <BasicButton style={[styles.submitButton, submitButtonStyle]}>
           <Text style={[styles.submitButtonText, submitButtonTextStyle]}>
             {submitButtonText}
           </Text>
@@ -63,7 +67,9 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   inputContainer: {
-    height: 50,
+    height: 150,
+    //borderWidth: 1,
+    //borderColor: 'white',
   },
   submitContainer: {
     alignItems: 'flex-end',

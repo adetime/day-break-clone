@@ -4,21 +4,11 @@ import { TextInput, View, Text, StyleSheet } from 'react-native';
 // Receives data and/or custom styles as props
 const Input = ({
   label,
-  placeholder,
-  placeholderTextColor,
-  value,
-  onChangeText,
-  secureTextEntry,
-  autoCapitalize,
-  autoCorrect,
-  maxLenght,
   inputStyle,
   labelStyle,
   containerStyle,
   ...props
 }) => {
-
-  console.log('inputStyle', inputStyle)
 
   // Was given a label ?
   const labelText = (
@@ -34,23 +24,15 @@ const Input = ({
       {labelText}
 
       <TextInput
-        {...props}
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={secureTextEntry}
-        autoCapitalize={autoCapitalize}
-        autoCorrect={autoCorrect}
-        maxLenght={maxLenght}
+        {...props} // Inherit any props passed to it
         style={[styles.input, inputStyle]}
-        placeholderTextColor={placeholderTextColor}
       />
 
     </View>
   );
 };
-// secureTextEntry = {true} to hidden typed text
-// autoCorrect = {false} avoid autocorrection on email and password
+// use: secureTextEntry = {true} to hidden typed text
+// use: autoCorrect = {false} avoid autocorrection on email and password
 // Remember: TextInput shows height = 0  if no specified
 
 // Defines default styles
@@ -68,18 +50,15 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     flex: 1,
   },
-  placeholderTextColor: {
-    //color: 'rgba(115,115,115,1)',
-    color: 'red',
-  },
   container: {
-    height: 40,
+    //height: 40,
     flex: 1,
-    //flexDirection: 'row',
     justifyContent: 'flex-start',
     marginHorizontal: 20,
     borderBottomWidth: 1,
-  }
+    //borderWidth: 1,
+    //borderColor: 'red',
+  },
 });
 
 export { Input };

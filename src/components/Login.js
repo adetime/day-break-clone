@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { View, Text, StyleSheet, Image, StatusBar, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 
 import { onPressLoginWithFacebook, onPressLoginWithEmail } from './../actions'
@@ -13,20 +13,15 @@ const backgroundImage = require('./../assets/welcome-blue-background.png');
 class Login extends Component {
 
   componentWillMount() {
-    //this.props.checkUserAuthState();
 
   }
 
   onPressFacebookButton = () => {
-    console.log('faceeeeeee')
     this.props.onPressLoginWithFacebook();
   }
 
   onPressEmailButton = () => {
-    console.log('eamilllll')
-    //Alert.alert('Cool, give email and password')
     this.props.onPressLoginWithEmail();
-    //this.props.onPressLoginWithFacebook();
   }
 
   render(){

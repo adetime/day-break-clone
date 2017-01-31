@@ -15,7 +15,7 @@ class CommentCreate extends Component {
         <StatusBar hidden />
         <InputForm
          placeholder="Add a comment right here!"
-         maxLenght={700}
+         maxLength={700}
          reminderText={0} // ------- Attention: needs update
          submitButtonText="DONE"
         />

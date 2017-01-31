@@ -2,12 +2,55 @@ import firebase from 'firebase';
 import { Actions } from 'react-native-router-flux';
 
 import {
+  MOOD_CHOICE,
+  ON_CHANGE_CARD_BODY_MESSAGE,
+  TEXT_SIZE,
   CREATE_CARD,
   SUPPORT_CARD,
   COMMENT_CARD
 } from './types';
 
-export const createCard = ({ moodType, message }) => {
+export const moodChoice = ({ type }) => {
+
+  // Set Router
+  Actions.cardCreate();
+
+  // Dispatch action to reducer sets this piece of state
+  return {
+    type: MOOD_CHOICE,
+    payload: type,
+  };
+};
+
+export const onChangeCardBodyMessage = (text) => {
+  return (dispatch) => {
+    textSize(dispatch, text);
+
+    // Dispatch action to reducer sets this piece of state
+    dispatch(
+      {
+        type: ON_CHANGE_CARD_BODY_MESSAGE,
+        payload: text,
+      }
+    );
+
+  };
+
+};
+
+const textSize = (dispatch, text) => {
+
+  console.log('text = ', text);
+  console.log('text.lenght = ', text.length);
+
+  // Dispatch action to reducer sets this piece of state
+  dispatch( {
+    type: TEXT_SIZE,
+    payload: text.length,
+  });
+};
+
+export const createCard = ({ type, message }) => {
   // Get current user
 
   // Persist data on firebase

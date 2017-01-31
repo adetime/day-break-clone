@@ -16,23 +16,15 @@ class LoginWithEmail extends Component {
   }
 
   onPressSubmit = () => {
-
     const { email, password } = this.props;
-
-    console.log('email submited = ', email, password )
-
     this.props.onSubmitLoginWithEmail({ email, password });
   }
 
   onChangeEmail = (text) => {
-    //console.log('email is changing', text)
     this.props.onChangeEmail(text);
-
-    console.log('current email = ', this.props.email)
   }
 
   onChangePassword = (text) => {
-    //console.log('password is changing')
     this.props.onChangePassword(text);
   }
 
