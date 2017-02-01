@@ -18,6 +18,7 @@ export const LOGIN_WITH_FACEBOOK_FAIL = 'login_with_facebook_fail';
 export const MOOD_CHOICE = 'moood_choice';
 export const ON_CHANGE_CARD_BODY_MESSAGE = 'on_change_card_body_message';
 export const TEXT_SIZE = 'text_size';
+export const ON_CHANGE_COMMENTS_AUTHORIZATION = 'on_change_comments_authorization';
 export const CREATE_CARD = 'create_card';
 export const SUPPORT_CARD = 'support_card';
 export const COMMENT_CARD = 'comment_card';

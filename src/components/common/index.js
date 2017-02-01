@@ -9,3 +9,4 @@ export * from './Body';
 export * from './Comment';
 export * from './Input';
 export * from './InputForm';
+export * from './SwitchBar';

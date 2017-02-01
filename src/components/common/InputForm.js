@@ -18,6 +18,7 @@ const InputForm = ({
   reminderTextStyle,
   submitButtonStyle,
   submitButtonTextStyle,
+  customBar,
   ...props
 }) => {
 
@@ -49,6 +50,8 @@ const InputForm = ({
 
       <View style={[styles.submitContainer, submitContainerStyle]}>
         {reminderRatio}
+
+        {customBar}
 
         <BasicButton style={[styles.submitButton, submitButtonStyle]}>
           <Text style={[styles.submitButtonText, submitButtonTextStyle]}>

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, StatusBar, Switch } from 'react-native';
 import { connect } from 'react-redux';
-import { onChangeCardBodyMessage } from './../actions';
+import { onChangeCardBodyMessage, onChangeCommentsAutorization } from './../actions';
 
-import { InputForm } from './common';
+import { InputForm, SwitchBar } from './common';
 
 class CardCreate extends Component {
   constructor(props) {
@@ -12,31 +12,43 @@ class CardCreate extends Component {
 
   onChangeBodyMessage = (text) => {
     this.props.onChangeCardBodyMessage(text);
-
   };
 
+  onValueChange = (value) => {
+    this.props.onChangeCommentsAutorization(value);
+  };
+
+
   render() {
-    console.log('card type on render = ', this.props.type )
+    const controlCommentsBar = (
+      <SwitchBar
+        targetTag='Comments'
+        value={this.props.enabledComments}
+        onValueChange={this.onValueChange}
+      />
+    );
+
+
     return (
       <View style={styles.container}>
 
         <StatusBar hidden />
         <InputForm
-         placeholder="Tell us more"
-         placeholderTextColor='white'
-         maxLength={this.props.maxTextSize}
-         reminderText={this.props.textSize}
-         onChangeText={this.onChangeBodyMessage}
-         submitButtonText="DONE"
-         returnKeyType='done'
-         underlineColorAndroid='transparent'
-         multiline
-         inputStyle={styles.inputText}
-         submitButtonStyle={styles.submitContainer}
-
+           placeholder="Tell us more"
+           placeholderTextColor='white'
+           maxLength={this.props.maxTextSize}
+           reminderText={this.props.textSize}
+           onChangeText={this.onChangeBodyMessage}
+           submitButtonText="DONE"
+           returnKeyType='done'
+           underlineColorAndroid='transparent'
+           multiline
+           inputStyle={styles.inputText}
+           submitButtonStyle={styles.submitContainer}
+           customBar={controlCommentsBar}
         />
 
-        <Switch />
+
 
       </View>
     );
@@ -65,14 +77,12 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = ({ mutateCard }) => {
-  const { type, textSize, maxTextSize } = mutateCard;
-  console.log('mutateCard = ', mutateCard )
-  console.log('card type mapped = ', type )
+  const { type, textSize, maxTextSize, enabledComments } = mutateCard;
 
-  return { type, textSize, maxTextSize  };
+  return { type, textSize, maxTextSize, enabledComments };
 };
 
 export default connect(
   mapStateToProps,
-  {onChangeCardBodyMessage}
+  {onChangeCardBodyMessage, onChangeCommentsAutorization}
 )(CardCreate);

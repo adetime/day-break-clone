@@ -2,6 +2,7 @@ import {
   MOOD_CHOICE,
   ON_CHANGE_CARD_BODY_MESSAGE,
   TEXT_SIZE,
+  ON_CHANGE_COMMENTS_AUTHORIZATION,
   CREATE_CARD,
   SUPPORT_CARD,
   COMMENT_CARD
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   bodyMessage: '',
   textSize: 0,
   maxTextSize: 700,
+  enabledComments: true,
 
 };
 
@@ -22,8 +24,9 @@ export default (state = INITIAL_STATE, action) => {
     case ON_CHANGE_CARD_BODY_MESSAGE:
       return { ...state, bodyMessage: action.payload};
     case TEXT_SIZE:
-    console.log('TEXT_SIZE = ', action.payload)
       return { ...state, textSize: action.payload};
+    case ON_CHANGE_COMMENTS_AUTHORIZATION:
+      return { ...state, enabledComments: action.payload};
     case CREATE_CARD:
       return state;
     case SUPPORT_CARD:
