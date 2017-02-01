@@ -41,8 +41,7 @@ class CardList extends Component {
   }
 
   onPressCreateCard = () => {
-    //Alert.alert('Some day I will create a Card')
-    Actions.moodChoice();
+    Actions.moodChoice();  //need to change to redux
   };
 
   // Render one ListView row for each Card

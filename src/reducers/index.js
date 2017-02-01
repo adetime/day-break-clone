@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import AuthReducer from './AuthReducer';
-import MutateCardReducer from './MutateCardReducer';
+import CardReducer from './CardReducer';
+import CommentReducer from './CommentReducer';
 
 export default combineReducers({
   auth: AuthReducer,
-  mutateCard: MutateCardReducer,
+  card: CardReducer,
+  comment: CommentReducer,
 
 });

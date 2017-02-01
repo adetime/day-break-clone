@@ -5,12 +5,12 @@ import { Input, BasicButton } from './';
 
 // Receives data and/or custom styles as props
 const InputForm = ({
-  items,
   placeholder,
   onChangeText,
   maxLength,
   reminderText,
   submitButtonText,
+  onPress,
   containerStyle,
   inputContainerStyle,
   submitContainerStyle,
@@ -53,7 +53,7 @@ const InputForm = ({
 
         {customBar}
 
-        <BasicButton style={[styles.submitButton, submitButtonStyle]}>
+        <BasicButton onPress={onPress} style={[styles.submitButton, submitButtonStyle]}>
           <Text style={[styles.submitButtonText, submitButtonTextStyle]}>
             {submitButtonText}
           </Text>

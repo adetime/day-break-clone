@@ -25,7 +25,7 @@ const SwitchBar = ({
       <View style={{flex: 1}}/>
 
       <View style={styles.switchContainer}>
-        <Switch value={value} onValueChange={onValueChange}/>
+        <Switch value={value} onValueChange={onValueChange} {...props}/>
       </View>
 
     </View>
@@ -37,14 +37,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 30,
     marginVertical: 10,
-    //justifyContent: 'space-between',
-
-    //borderWidth: 1,
-    //borderColor: 'yellow',
   },
   targetContainer: {
-    //borderWidth: 1,
-    //borderColor: 'red',
+
   },
   targetTag: {
     color: 'rgba(58,179,221,1)',
@@ -54,8 +49,7 @@ const styles = StyleSheet.create({
     color: 'rgba(116,116,116,1)',
   },
   switchContainer: {
-    //borderWidth: 1,
-    //borderColor: 'green',
+    
   },
 
 });

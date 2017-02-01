@@ -5,6 +5,7 @@ import {
   ON_CHANGE_COMMENTS_AUTHORIZATION,
   CREATE_CARD,
   SUPPORT_CARD,
+  ON_CHANGE_COMMENT_MESSAGE,
   COMMENT_CARD
 } from './../actions/types';
 
@@ -20,7 +21,7 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case MOOD_CHOICE:
-      return { ...state, type: action.payload};
+      return { ...INITIAL_STATE, type: action.payload};
     case ON_CHANGE_CARD_BODY_MESSAGE:
       return { ...state, bodyMessage: action.payload};
     case TEXT_SIZE:

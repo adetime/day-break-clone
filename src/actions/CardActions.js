@@ -7,8 +7,7 @@ import {
   TEXT_SIZE,
   ON_CHANGE_COMMENTS_AUTHORIZATION,
   CREATE_CARD,
-  SUPPORT_CARD,
-  COMMENT_CARD
+  SUPPORT_CARD,  
 } from './types';
 
 export const moodChoice = ({ type }) => {
@@ -71,15 +70,5 @@ export const supportCard = ({ cardId }) => {
   // Get current user
 
   // Persist data on firebase
-
-};
-
-
-export const commentCard = ({ cardId, message }) => {
-  // Get current user
-
-  // Persist data on firebase
-
-  // Set Router
 
 };

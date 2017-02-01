@@ -21,4 +21,7 @@ export const TEXT_SIZE = 'text_size';
 export const ON_CHANGE_COMMENTS_AUTHORIZATION = 'on_change_comments_authorization';
 export const CREATE_CARD = 'create_card';
 export const SUPPORT_CARD = 'support_card';
-export const COMMENT_CARD = 'comment_card';
+
+export const ON_PRESS_COMMENT = 'on_press_comment';
+export const ON_CHANGE_COMMENT = 'on_change_comment';
+export const ON_SUBMIT_COMMENT = 'on_submit_comment_card';

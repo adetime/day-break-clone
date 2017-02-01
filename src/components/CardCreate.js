@@ -25,6 +25,7 @@ class CardCreate extends Component {
         targetTag='Comments'
         value={this.props.enabledComments}
         onValueChange={this.onValueChange}
+        onTintColor='rgba(58,179,221,1)' // iOS only
       />
     );
 
@@ -76,8 +77,9 @@ const styles = StyleSheet.create({
 
 });
 
-const mapStateToProps = ({ mutateCard }) => {
-  const { type, textSize, maxTextSize, enabledComments } = mutateCard;
+const mapStateToProps = ({ card }) => {
+  console.log('newCard', card)
+  const { type, textSize, maxTextSize, enabledComments } = card;
 
   return { type, textSize, maxTextSize, enabledComments };
 };

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Image, Text, StyleSheet, ScrollView, StatusBar } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { connect } from 'react-redux';
+
+import { onPressComment } from './../actions';
 
 import { Header, MoodIcon, Body, SocialBar, Comment } from './common';
 
@@ -10,7 +12,11 @@ import { getCommentsByCardId } from './../server/api';
 class CardDetail extends Component {
   constructor(props) {
     super(props);
+  }
 
+  onPressComment = () => {    
+    // Call redux action
+    this.props.onPressComment(this.props.card.id);
   }
 
   renderComments = () => {
@@ -58,7 +64,7 @@ class CardDetail extends Component {
       <View>
 
         <ScrollView>
-          
+
           <View style={containerStyle}>
 
             <Header userName={ownerUserName} containerStyle={headerStyle} small />
@@ -67,7 +73,7 @@ class CardDetail extends Component {
             <SocialBar
                addSupport={() => {}}
                supportCount={numberOfSupport}
-               addComment={() => Actions.commentCreate()}
+               addComment={this.onPressComment}
                commentCount={numberOfComments}
                isLiked={false}
                type={type}
@@ -109,4 +115,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardDetail;
+const mapStateToProps = ({ comment }) => {
+  //console.log('comment', comment)
+  return {};
+};
+
+export default connect(mapStateToProps, {onPressComment})(CardDetail);
