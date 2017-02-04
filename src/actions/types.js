@@ -20,7 +20,12 @@ export const ON_CHANGE_CARD_BODY_MESSAGE = 'on_change_card_body_message';
 export const TEXT_SIZE = 'text_size';
 export const ON_CHANGE_COMMENTS_AUTHORIZATION = 'on_change_comments_authorization';
 export const CREATE_CARD = 'create_card';
-export const SUPPORT_CARD = 'support_card';
+export const SHOW_CARD_DETAIL = 'show_card_detail';
+
+export const SET_INITIAL_REACTION_STATE = 'set_initial_reaction_state';
+export const ON_PRESS_LIKE_REACTION = 'on_press_like_reaction';
+export const COUNT_CARD_LIKED_REACTION = 'count_card_liked_reaction';
+export const SET_USER_LIKED_CARDS = 'set_user_liked_cards'
 
 export const ON_PRESS_COMMENT = 'on_press_comment';
 export const ON_CHANGE_COMMENT = 'on_change_comment';

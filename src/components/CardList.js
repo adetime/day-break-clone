@@ -7,8 +7,12 @@ import {
   Image,
   Alert,
 } from 'react-native';
+import { connect } from 'react-redux';
 
-import { Card, BasicButton } from './common';
+import { showCardDetail, onPressSupport } from './../actions';
+
+import { BasicButton } from './common';
+import Card from './Card';
 import { getCards } from './../server/api';
 
 import { Actions } from 'react-native-router-flux'; // to be moved to redux
@@ -46,7 +50,15 @@ class CardList extends Component {
 
   // Render one ListView row for each Card
   renderRow = (oneCard) => {
-    return <Card data={oneCard} />;
+    return (
+      <Card
+        data={oneCard}
+        showCardDetail={this.props.showCardDetail}
+        onPressSupport={this.props.onPressSupport}
+
+
+      />
+   );
   }
 
   render() {
@@ -60,6 +72,7 @@ class CardList extends Component {
             renderRow={this.renderRow}
           />
 
+          {/* Create card button */}
           <BasicButton
             onPress={this.onPressCreateCard}
             parentStyle={styles.createCardButtonParent}
@@ -99,4 +112,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardList;
+const mapStateToProps = () => {
+  return {};
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    showCardDetail,
+    onPressSupport,
+
+  })(CardList);

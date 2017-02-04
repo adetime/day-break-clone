@@ -4,9 +4,8 @@ import {
   TEXT_SIZE,
   ON_CHANGE_COMMENTS_AUTHORIZATION,
   CREATE_CARD,
-  SUPPORT_CARD,
-  ON_CHANGE_COMMENT_MESSAGE,
-  COMMENT_CARD
+  SHOW_CARD_DETAIL,
+
 } from './../actions/types';
 
 const INITIAL_STATE = {
@@ -30,11 +29,9 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, enabledComments: action.payload};
     case CREATE_CARD:
       return state;
-    case SUPPORT_CARD:
-      return state;
-    case COMMENT_CARD:
+    case SHOW_CARD_DETAIL:
         return state;
     default:
-    return state;
+      return state;
   }
 };

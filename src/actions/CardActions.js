@@ -7,7 +7,7 @@ import {
   TEXT_SIZE,
   ON_CHANGE_COMMENTS_AUTHORIZATION,
   CREATE_CARD,
-  SUPPORT_CARD,  
+  SHOW_CARD_DETAIL,
 } from './types';
 
 export const moodChoice = ({ type }) => {
@@ -66,9 +66,13 @@ export const createCard = ({ type, message }) => {
 };
 
 
-export const supportCard = ({ cardId }) => {
-  // Get current user
+export const showCardDetail = ({ card }) => {
+  return (dispatch) => {
+      dispatch( {
+        type: SHOW_CARD_DETAIL,
+      });
 
-  // Persist data on firebase
-
+      // Set Router and 'card props' as props the next scene component
+      Actions.cardDetail({ card: card });
+  };
 };

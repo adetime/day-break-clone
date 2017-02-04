@@ -10,6 +10,10 @@ export const getCards = () => {
 };
 
 
+export const getCurrentUserId = () => {
+  return 'nance_01_hfkf';
+};
+
 
 export const getCardById = (id) => {
 

@@ -1,44 +1,63 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { connect } from 'react-redux';
 
-import { Actions } from 'react-native-router-flux'; //-----Attention: to be moved to redux action creators
+import { Header, MoodIcon, Body, SocialBar } from './common';
 
-import { Header, MoodIcon, Body, SocialBar } from './';
+import { setInitialReactionState } from './../actions';
 
 
 class Card extends Component{
   constructor(props){
     super(props);
     this.state = {
-      supportCount: this.props.data.numberOfSupport, //-----Attention: Initiate with zero
-      commentCount: this.props.data.numberOfComments,//-----Attention: Initiate with zero
-      currentUserLiked: false, //-----Attention: To be fetched from user authetication
+      //supportCount: this.props.data.numberOfSupport, //-----Attention: Initiate with zero
+      //commentCount: this.props.data.numberOfComments,//-----Attention: Initiate with zero
+      //currentUserLiked: false, //-----Attention: To be fetched from user authetication
     };
   }
+
+  componentDidMount(){
+    const { id, numberOfSupport, supportedUserId } = this.props.data;
+
+    //console.log('supportedUserId', supportedUserId)
+      this.props.setInitialReactionState({
+        cardId: id,
+        numberOfLikes: numberOfSupport,
+        likedUsersId: supportedUserId,
+      });
+  }
+
+
 
   // Handles the support button
   addSupport = () => {
     // -------------- Attention: each user should support each card
     // -------------- only one time. To be fixed with authetication rules
-    this.setState({
-      supportCount: ++this.state.supportCount,
-      currentUserLiked: true,
-    });
+    //this.setState({
+      //supportCount: ++this.state.supportCount,
+      //currentUserLiked: true,
+  //  });
+
+    console.log('fui clicado')
+
+    this.props.onPressSupport(this.props.data.id);
     //------- Attention: Need to mutate user database model
   }
 
-  // Handles navagation to CardDetail's screen
-  showDetail = () => {
 
-    // Tells to navegation module what the next scene is
+    // Handles navagation to CardDetail's screen
+  showDetail = () => {
     // And pass 'card' as props the next scene component
-    Actions.cardDetail({ card: this.props.data });
-    //------Attention: to be moved to redux action creators
+    // using action creators
+    this.props.showCardDetail({ card: this.props.data });
   }
 
   render() {
     // Receives data to render a Card
     const { type, ownerUserName, timeStamp, body } = this.props.data;
+
+    //console.log('this.props.data', this.props.data)
 
     // Resulting component
     return(
@@ -71,12 +90,13 @@ class Card extends Component{
         */}
         <SocialBar
            addSupport={this.addSupport}
-           supportCount={this.state.supportCount}
+           supportCount={this.props.numberOfLikes}
            addComment={this.showDetail}
-           commentCount={this.state.commentCount}
-           isLiked={this.state.currentUserLiked}
+           commentCount={this.props.commentCount}
+           isLiked={this.props.currentUserLiked}
            type={type}
         />
+
       </View>
     );
   }
@@ -108,4 +128,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export { Card };
+const mapStateToProps = ({reaction}) => {
+  const { numberOfLikes, currentUserLiked } = reaction;
+
+  console.log('numberOfLikes card', numberOfLikes)
+  console.log('currentUserLiked card', currentUserLiked)
+
+  return { numberOfLikes, currentUserLiked };
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    setInitialReactionState,
+
+  }
+)(Card);

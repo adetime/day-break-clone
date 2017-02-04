@@ -14,7 +14,7 @@ class CardDetail extends Component {
     super(props);
   }
 
-  onPressComment = () => {    
+  onPressComment = () => {
     // Call redux action
     this.props.onPressComment(this.props.card.id);
   }
@@ -57,6 +57,8 @@ class CardDetail extends Component {
       socialBarStyle,
       moodImageStyle
     } = styles;
+
+
 
 
     // Resulting Component
